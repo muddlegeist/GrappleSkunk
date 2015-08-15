@@ -10,4 +10,6 @@
 
 @interface MGGraphView : NSView
 
+@property (strong, nonatomic) NSBezierPath *theGridPath;
+
 @end

@@ -8,8 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "MGGraphView.h"
+
 @interface ViewController : NSViewController
 
+@property (weak, nonatomic) IBOutlet MGGraphView* theGraphView;
 
 @end
 

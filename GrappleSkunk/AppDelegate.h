@@ -7,6 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "GrappleSkunkEngine.h"
+
+extern NSString* const kGraphDataChangedNotification;
+extern NSString* const kRequestGraphRecalcNotification;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
@@ -14,6 +18,9 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+@property (strong, nonatomic) GrappleSkunkEngine* gsEngine;
+
++ (AppDelegate*) sharedAppDelegate;
 
 @end
 

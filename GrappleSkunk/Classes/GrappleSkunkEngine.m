@@ -72,4 +72,26 @@ static NSString * const kDemoJSONDataCloseKey = @"close";
     }
 }
 
+- (void)setDefaultGridIntervals
+{
+    NSDate *date1=[self.theDateFormatter dateFromString:@"2000-01-01"];
+    NSDate *date2=[self.theDateFormatter dateFromString:@"2000-01-02"];
+    
+    float xInterval = [date2 timeIntervalSinceReferenceDate] - [date1 timeIntervalSinceReferenceDate];
+    
+    float yInterval = 1.0;
+    
+    CGPoint minConglomeratePoint = [self.theGraphMachine getMinimumConglomeratePoint];
+    
+    [self.theGraphMachine setXGraphInterval:xInterval minXGraphIntervalPoint:floor(minConglomeratePoint.x) theYGraphInterval:yInterval andMinYGraphIntervalPoint:floor(minConglomeratePoint.y)];
+}
+
+#pragma mark - Engine Access
+
+- (NSBezierPath*)getGridPathForFrame:(CGRect)inFrame
+{
+    NSBezierPath *path = [self.theGraphMachine createGridPath:inFrame];
+    return path;
+}
+
 @end

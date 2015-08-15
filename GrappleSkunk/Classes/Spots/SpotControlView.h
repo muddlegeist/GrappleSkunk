@@ -22,10 +22,6 @@
 
 - (void)mouseEntered:(NSEvent *)theEvent;
 - (void)mouseExited:(NSEvent *)theEvent;
-
-- (void)mouseDown:(NSEvent *)theEvent;
-- (void)mouseUp:(NSEvent *)theEvent;
-- (void)mouseDragged:(NSEvent *)theEvent;
 - (void)mouseMoved:(NSEvent *)theEvent;
 
 @end

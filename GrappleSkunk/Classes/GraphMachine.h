@@ -22,6 +22,8 @@ andMinYGraphIntervalPoint:(CGFloat)yIvalPoint;
 
 - (void)clear;
 
-- (NSBezierPath*)createGridBezier:(CGRect)inFrame;
+- (NSBezierPath*)createGridPath:(CGRect)inFrame;
+
+- (CGPoint)getMinimumConglomeratePoint;
 
 @end

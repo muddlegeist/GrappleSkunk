@@ -7,11 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "GrappleSkunkEngine.h"
+
+NSString* const kGraphDataChangedNotification = @"kGraphDataChangedNotification";
+NSString* const kRequestGraphRecalcNotification = @"kRequestGraphRecalcNotification";
 
 @interface AppDelegate ()
-
-@property (strong, nonatomic) GrappleSkunkEngine* gsEngine;
 
 - (IBAction)saveAction:(id)sender;
 
@@ -19,11 +19,27 @@
 
 @implementation AppDelegate
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
     
     _gsEngine = [GrappleSkunkEngine new];
-    [_gsEngine addDataFromProjectFile:@"stockprices"];
+    [self.gsEngine addDataFromProjectFile:@"stockprices"];
+    [self.gsEngine setDefaultGridIntervals];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(handleRequestGraphRecalcNotification)
+     name:kRequestGraphRecalcNotification
+     object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:kGraphDataChangedNotification
+     object:self];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -178,6 +194,22 @@
     }
 
     return NSTerminateNow;
+}
+
+#pragma mark - access to app delegate etc.
+
++ (AppDelegate*) sharedAppDelegate
+{
+    return (AppDelegate*)[[NSApplication sharedApplication] delegate];
+}
+
+#pragma mark - Notification Handling
+
+-(void)handleRequestGraphRecalcNotification
+{
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:kGraphDataChangedNotification
+     object:self];
 }
 
 @end

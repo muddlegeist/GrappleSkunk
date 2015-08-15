@@ -13,6 +13,9 @@ static NSString * const kYValKey = @"kYValKey";
 static NSString * const kLabelKey = @"kLabelKey";
 static NSString * const kAuxViewKey = @"kAuxViewKey";
 
+static const CGFloat kGraphXAxisRatio = 0.9; //the x span takes up 80% of the frame width
+static const CGFloat kGraphYAxisRatio = 0.9; //the y span takes up 80% of the frame height
+
 typedef NSComparisonResult (^CompareBlock)(id, id);
 
 @interface GraphMachine ()
@@ -41,27 +44,28 @@ typedef NSComparisonResult (^CompareBlock)(id, id);
 {
     self = [super init];
     if (self) {
-        _dataPoints = [NSMutableArray new];
+        [self clear];
+        
         _sortComparator = ^(id obj1, id obj2) {
             NSNumber *x1 = (NSNumber*)((NSDictionary*)obj1)[kXValKey];
             NSNumber *x2 = (NSNumber*)((NSDictionary*)obj2)[kXValKey];
             return (NSComparisonResult)[x1 compare:x2];
         };
         
-        _xInterval = 0.0;
-        _xMinIntervalPoint = 0.0;
-        _yInterval = 0.0;
-        _yMinIntervalPoint = 0.0;
         
-        _minDataPointX = HUGE_VALF;
-        _maxDataPointX = -HUGE_VALF;
-        _minDataPointY = HUGE_VALF;
-        _maxDataPointY = -HUGE_VALF;
-        
-        _xSpan = 0.0;
-        _ySpan = 0.0;
     }
     return self;
+}
+
+- (void)setXGraphInterval:(CGFloat)xIval
+   minXGraphIntervalPoint:(CGFloat)xIvalPoint
+        theYGraphInterval:(CGFloat)yIval
+andMinYGraphIntervalPoint:(CGFloat)yIvalPoint
+{
+    self.xInterval = xIval;
+    self.xMinIntervalPoint = xIvalPoint;
+    self.yInterval = yIval;
+    self.yMinIntervalPoint = yIvalPoint;
 }
 
 - (void)addDataPointWithXValue:(CGFloat)xValue
@@ -92,17 +96,35 @@ typedef NSComparisonResult (^CompareBlock)(id, id);
                                       usingComparator:self.sortComparator];
     
     [self.dataPoints insertObject:newDataPoint atIndex:sortedIndex];
+    
+    [self updateExtremaForPointWithXValue:xValue yValue:yValue];
 }
 
-- (void)setXGraphInterval:(CGFloat)xIval
-    minXGraphIntervalPoint:(CGFloat)xIvalPoint
-        theYGraphInterval:(CGFloat)yIval
-    andMinYGraphIntervalPoint:(CGFloat)yIvalPoint
+- (void)updateExtremaForPointWithXValue:(CGFloat)x
+                                 yValue:(CGFloat)y
 {
-    self.xInterval = xIval;
-    self.xMinIntervalPoint = xIvalPoint;
-    self.yInterval = yIval;
-    self.yMinIntervalPoint = yIvalPoint;
+    if( x < self.minDataPointX )
+    {
+        self.minDataPointX = x;
+    }
+    
+    if( x > self.maxDataPointX )
+    {
+        self.maxDataPointX = x;
+    }
+    
+    if( y < self.minDataPointY )
+    {
+        self.minDataPointY = y;
+    }
+    
+    if( y > self.maxDataPointY )
+    {
+        self.maxDataPointY = y;
+    }
+
+    self.xSpan = self.maxDataPointX - self.minDataPointX;
+    self.ySpan = self.maxDataPointY - self.minDataPointY;
 }
 
 - (void)calculateExtrema
@@ -117,39 +139,114 @@ typedef NSComparisonResult (^CompareBlock)(id, id);
         CGFloat x = [xNumber floatValue];
         CGFloat y = [yNumber floatValue];
         
-        if( x > self.minDataPointX )
-        {
-            self.minDataPointX = x;
-        }
-        
-        if( x > self.maxDataPointX )
-        {
-            self.maxDataPointX = x;
-        }
-        
-        if( y > self.minDataPointY )
-        {
-            self.minDataPointY = y;
-        }
-        
-        if( y > self.maxDataPointY )
-        {
-            self.maxDataPointY = y;
-        }
+        [self updateExtremaForPointWithXValue:x yValue:y];
     }
-    
-    self.xSpan = self.maxDataPointX - self.minDataPointX;
-    self.ySpan = self.maxDataPointY - self.minDataPointY;
 }
 
 - (void)clear
 {
     self.dataPoints = [NSMutableArray new];
+    
+    self.xInterval = 0.0;
+    self.xMinIntervalPoint = 0.0;
+    self.yInterval = 0.0;
+    self.yMinIntervalPoint = 0.0;
+    
+    self.minDataPointX = HUGE_VALF;
+    self.maxDataPointX = -HUGE_VALF;
+    self.minDataPointY = HUGE_VALF;
+    self.maxDataPointY = -HUGE_VALF;
+    
+    self.xSpan = 0.0;
+    self.ySpan = 0.0;
 }
 
-- (NSBezierPath*)createGridBezier:(CGRect)inFrame
+- (NSBezierPath*)createGridPath:(CGRect)inFrame
 {
+    if( self.xSpan == 0.0 || self.ySpan == 0.0 ) return nil; //error condition
     
+    CGFloat frameWidth = inFrame.size.width;
+    CGFloat frameHeight = inFrame.size.height;
+    
+    CGFloat graphDisplayFrameWidth = frameWidth * kGraphXAxisRatio;
+    CGFloat graphDisplayFrameHeight = frameHeight * kGraphYAxisRatio;
+    
+    //CGFloat graphDisplayMarginX = ((frameWidth - graphDisplayFrameWidth) / 2.0);
+    //CGFloat graphDisplayMarginY = ((frameHeight - graphDisplayFrameHeight) / 2.0);
+    
+    //CGFloat graphDisplayFrameMinX = inFrame.origin.x + graphDisplayMarginX;
+    //CGFloat graphDisplayFrameMinY = inFrame.origin.y + graphDisplayMarginY;
+    
+    //CGFloat graphDisplayFrameMaxX = inFrame.origin.x + frameWidth - graphDisplayMarginX;
+    //CGFloat graphDisplayFrameMaxY = inFrame.origin.y + frameHeight - graphDisplayMarginY;
+    
+    CGFloat xRatioDisplayToData = graphDisplayFrameWidth / self.xSpan;
+    CGFloat yRatioDisplayToData = graphDisplayFrameHeight / self.ySpan;
+    
+    CGFloat fullFrameWidthDataSpanX = self.xSpan / kGraphXAxisRatio;
+    CGFloat fullFrameHeightDataSpanY = self.ySpan / kGraphYAxisRatio;
+    
+    CGFloat fullFrameWidthDataMarginX = ((fullFrameWidthDataSpanX - self.xSpan) / 2.0);
+    CGFloat fullFrameHeightDataMarginY = ((fullFrameHeightDataSpanY - self.ySpan) / 2.0);
+    
+    CGFloat xGridDataValueMin = self.minDataPointX - fullFrameWidthDataMarginX;
+    CGFloat xGridDataValueMax = self.maxDataPointX + fullFrameWidthDataMarginX;
+    
+    CGFloat yGridDataValueMin = self.minDataPointY - fullFrameHeightDataMarginY;
+    CGFloat yGridDataValueMax = self.maxDataPointY + fullFrameHeightDataMarginY;
+    
+    NSBezierPath* thePath = [NSBezierPath bezierPath];
+    
+    CGFloat xGridDataValue = self.xMinIntervalPoint;
+    
+    while( xGridDataValue <= xGridDataValueMax )
+    {
+        CGFloat frameX = inFrame.origin.x + ((xGridDataValue - xGridDataValueMin) * xRatioDisplayToData);
+        [thePath moveToPoint: CGPointMake( frameX, inFrame.origin.y)];
+        [thePath lineToPoint: CGPointMake( frameX, inFrame.origin.y + frameHeight)];
+        
+        xGridDataValue += self.xInterval;
+    }
+    
+    xGridDataValue = self.xMinIntervalPoint - self.xInterval;
+    
+    while( xGridDataValue >= xGridDataValueMin )
+    {
+        CGFloat frameX = inFrame.origin.x + ((xGridDataValue - xGridDataValueMin) * xRatioDisplayToData);
+        [thePath moveToPoint: CGPointMake( frameX, inFrame.origin.y)];
+        [thePath lineToPoint: CGPointMake( frameX, inFrame.origin.y + frameHeight)];
+        
+        xGridDataValue -= self.xInterval;
+    }
+    
+    CGFloat yGridDataValue = self.yMinIntervalPoint;
+    
+    while( yGridDataValue <= yGridDataValueMax )
+    {
+        CGFloat frameY = inFrame.origin.y + ((yGridDataValue - yGridDataValueMin) * yRatioDisplayToData);
+        [thePath moveToPoint: CGPointMake( inFrame.origin.x, frameY )];
+        [thePath lineToPoint: CGPointMake( inFrame.origin.x + frameWidth, frameY )];
+        
+        yGridDataValue += self.yInterval;
+    }
+    
+    yGridDataValue = self.yMinIntervalPoint - self.yInterval;
+    
+    while( yGridDataValue >= yGridDataValueMin )
+    {
+        CGFloat frameY = inFrame.origin.y + ((yGridDataValue - yGridDataValueMin) * yRatioDisplayToData);
+        [thePath moveToPoint: CGPointMake( inFrame.origin.x, frameY )];
+        [thePath lineToPoint: CGPointMake( inFrame.origin.x + frameWidth, frameY )];
+        
+        yGridDataValue -= self.yInterval;
+    }
+    
+    return thePath;
+}
+
+- (CGPoint)getMinimumConglomeratePoint
+{
+    return CGPointMake( self.minDataPointX, self.minDataPointY );
 }
 
 @end

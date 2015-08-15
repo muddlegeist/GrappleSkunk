@@ -6,12 +6,16 @@
 //  Copyright (c) 2015 Muddlegeist. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 @interface GrappleSkunkEngine : NSObject
 
 - (void)addDataFromProjectFile:(NSString*)projectFile;
 - (void)addDataFromJSONString:(NSString*)jsonString;
 - (void)addDataFromDemoDictionary:(NSDictionary*)dataDictionary;
+
+- (void)setDefaultGridIntervals;
+
+- (NSBezierPath*)getGridPathForFrame:(CGRect)inFrame;
 
 @end

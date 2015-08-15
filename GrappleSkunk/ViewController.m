@@ -7,19 +7,40 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @implementation ViewController
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Do any additional setup after loading the view.
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(handleDataChangedNotification)
+     name:kGraphDataChangedNotification
+     object:nil];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
 
     // Update the view, if already loaded.
+}
+
+#pragma mark - Notification Handling
+
+-(void)handleDataChangedNotification
+{
+    CGRect graphFrame = self.theGraphView.bounds;
+    
+    NSBezierPath *theGridPath = [[AppDelegate sharedAppDelegate].gsEngine getGridPathForFrame:graphFrame];
+    
+    self.theGraphView.theGridPath = theGridPath;
 }
 
 @end

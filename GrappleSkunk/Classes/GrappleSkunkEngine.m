@@ -29,7 +29,7 @@ static NSString * const kDemoJSONDataCloseKey = @"close";
         _theGraphMachine = [GraphMachine new];
         _theDateFormatter = [NSDateFormatter new];
         
-        [_theDateFormatter setDateFormat:@"yyyy-MM-dd"];
+        [_theDateFormatter setDateFormat:@"YYYY-MM-DD"];
     }
     return self;
 }

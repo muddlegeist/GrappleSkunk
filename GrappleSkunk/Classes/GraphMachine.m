@@ -20,6 +20,19 @@ typedef NSComparisonResult (^CompareBlock)(id, id);
 @property (strong, nonatomic) NSMutableArray* dataPoints;
 @property (copy, nonatomic) CompareBlock sortComparator;
 
+@property (assign, nonatomic) CGFloat xInterval;
+@property (assign, nonatomic) CGFloat xMinIntervalPoint;
+@property (assign, nonatomic) CGFloat yInterval;
+@property (assign, nonatomic) CGFloat yMinIntervalPoint;
+
+@property (assign, nonatomic) CGFloat minDataPointX;
+@property (assign, nonatomic) CGFloat maxDataPointX;
+@property (assign, nonatomic) CGFloat minDataPointY;
+@property (assign, nonatomic) CGFloat maxDataPointY;
+
+@property (assign, nonatomic) CGFloat xSpan;
+@property (assign, nonatomic) CGFloat ySpan;
+
 @end
 
 @implementation GraphMachine
@@ -30,10 +43,23 @@ typedef NSComparisonResult (^CompareBlock)(id, id);
     if (self) {
         _dataPoints = [NSMutableArray new];
         _sortComparator = ^(id obj1, id obj2) {
-            NSNumber *y1 = (NSNumber*)((NSDictionary*)obj1)[kYValKey];
-            NSNumber *y2 = (NSNumber*)((NSDictionary*)obj2)[kYValKey];
-            return (NSComparisonResult)[y1 compare:y2];
+            NSNumber *x1 = (NSNumber*)((NSDictionary*)obj1)[kXValKey];
+            NSNumber *x2 = (NSNumber*)((NSDictionary*)obj2)[kXValKey];
+            return (NSComparisonResult)[x1 compare:x2];
         };
+        
+        _xInterval = 0.0;
+        _xMinIntervalPoint = 0.0;
+        _yInterval = 0.0;
+        _yMinIntervalPoint = 0.0;
+        
+        _minDataPointX = HUGE_VALF;
+        _maxDataPointX = -HUGE_VALF;
+        _minDataPointY = HUGE_VALF;
+        _maxDataPointY = -HUGE_VALF;
+        
+        _xSpan = 0.0;
+        _ySpan = 0.0;
     }
     return self;
 }
@@ -68,9 +94,62 @@ typedef NSComparisonResult (^CompareBlock)(id, id);
     [self.dataPoints insertObject:newDataPoint atIndex:sortedIndex];
 }
 
+- (void)setXGraphInterval:(CGFloat)xIval
+    minXGraphIntervalPoint:(CGFloat)xIvalPoint
+        theYGraphInterval:(CGFloat)yIval
+    andMinYGraphIntervalPoint:(CGFloat)yIvalPoint
+{
+    self.xInterval = xIval;
+    self.xMinIntervalPoint = xIvalPoint;
+    self.yInterval = yIval;
+    self.yMinIntervalPoint = yIvalPoint;
+}
+
+- (void)calculateExtrema
+{
+    for( id item in self.dataPoints )
+    {
+        NSDictionary *pointDictionary = (NSDictionary*)item;
+        
+        NSNumber *xNumber = (NSNumber*)(pointDictionary[kXValKey]);
+        NSNumber *yNumber = (NSNumber*)(pointDictionary[kYValKey]);
+        
+        CGFloat x = [xNumber floatValue];
+        CGFloat y = [yNumber floatValue];
+        
+        if( x > self.minDataPointX )
+        {
+            self.minDataPointX = x;
+        }
+        
+        if( x > self.maxDataPointX )
+        {
+            self.maxDataPointX = x;
+        }
+        
+        if( y > self.minDataPointY )
+        {
+            self.minDataPointY = y;
+        }
+        
+        if( y > self.maxDataPointY )
+        {
+            self.maxDataPointY = y;
+        }
+    }
+    
+    self.xSpan = self.maxDataPointX - self.minDataPointX;
+    self.ySpan = self.maxDataPointY - self.minDataPointY;
+}
+
 - (void)clear
 {
     self.dataPoints = [NSMutableArray new];
+}
+
+- (NSBezierPath*)createGridBezier:(CGRect)inFrame
+{
+    
 }
 
 @end

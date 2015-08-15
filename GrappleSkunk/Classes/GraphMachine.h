@@ -15,6 +15,13 @@
                          label:(NSString*)label
                        auxView:(NSView*)auxView;
 
+- (void)setXGraphInterval:(CGFloat)xIval
+   minXGraphIntervalPoint:(CGFloat)xIvalPoint
+        theYGraphInterval:(CGFloat)yIval
+andMinYGraphIntervalPoint:(CGFloat)yIvalPoint;
+
 - (void)clear;
+
+- (NSBezierPath*)createGridBezier:(CGRect)inFrame;
 
 @end

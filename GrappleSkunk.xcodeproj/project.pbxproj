@@ -14,6 +14,12 @@
 		1CD8FFB61B7EA705002E6108 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8FFB51B7EA705002E6108 /* Images.xcassets */; };
 		1CD8FFB91B7EA705002E6108 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8FFB71B7EA705002E6108 /* Main.storyboard */; };
 		1CD8FFC51B7EA705002E6108 /* GrappleSkunkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFC41B7EA705002E6108 /* GrappleSkunkTests.m */; };
+		1CD8FFD01B7EA7B9002E6108 /* MGGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFCF1B7EA7B9002E6108 /* MGGraphView.m */; };
+		1CD8FFD41B7EAF55002E6108 /* NSBezierPath+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFD31B7EAF55002E6108 /* NSBezierPath+Extras.m */; };
+		1CD8FFDD1B7EB18B002E6108 /* SpotControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFD81B7EB18B002E6108 /* SpotControlView.m */; };
+		1CD8FFDE1B7EB18B002E6108 /* SpotViewEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFDA1B7EB18B002E6108 /* SpotViewEntity.m */; };
+		1CD8FFDF1B7EB18B002E6108 /* ViewEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFDC1B7EB18B002E6108 /* ViewEntity.m */; };
+		1CD8FFE51B7EBFE4002E6108 /* GraphMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFE41B7EBFE4002E6108 /* GraphMachine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +46,18 @@
 		1CD8FFBE1B7EA705002E6108 /* GrappleSkunkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrappleSkunkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CD8FFC31B7EA705002E6108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CD8FFC41B7EA705002E6108 /* GrappleSkunkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrappleSkunkTests.m; sourceTree = "<group>"; };
+		1CD8FFCE1B7EA7B9002E6108 /* MGGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGGraphView.h; path = Classes/MGGraphView.h; sourceTree = "<group>"; };
+		1CD8FFCF1B7EA7B9002E6108 /* MGGraphView.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; name = MGGraphView.m; path = Classes/MGGraphView.m; sourceTree = "<group>"; };
+		1CD8FFD21B7EAF55002E6108 /* NSBezierPath+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+Extras.h"; path = "Categories/NSBezierPath+Extras.h"; sourceTree = "<group>"; };
+		1CD8FFD31B7EAF55002E6108 /* NSBezierPath+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+Extras.m"; path = "Categories/NSBezierPath+Extras.m"; sourceTree = "<group>"; };
+		1CD8FFD71B7EB18B002E6108 /* SpotControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotControlView.h; path = Classes/Spots/SpotControlView.h; sourceTree = "<group>"; };
+		1CD8FFD81B7EB18B002E6108 /* SpotControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotControlView.m; path = Classes/Spots/SpotControlView.m; sourceTree = "<group>"; };
+		1CD8FFD91B7EB18B002E6108 /* SpotViewEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotViewEntity.h; path = Classes/Spots/SpotViewEntity.h; sourceTree = "<group>"; };
+		1CD8FFDA1B7EB18B002E6108 /* SpotViewEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotViewEntity.m; path = Classes/Spots/SpotViewEntity.m; sourceTree = "<group>"; };
+		1CD8FFDB1B7EB18B002E6108 /* ViewEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewEntity.h; path = Classes/Spots/ViewEntity.h; sourceTree = "<group>"; };
+		1CD8FFDC1B7EB18B002E6108 /* ViewEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewEntity.m; path = Classes/Spots/ViewEntity.m; sourceTree = "<group>"; };
+		1CD8FFE31B7EBFE4002E6108 /* GraphMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphMachine.h; path = Classes/GraphMachine.h; sourceTree = "<group>"; };
+		1CD8FFE41B7EBFE4002E6108 /* GraphMachine.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; name = GraphMachine.m; path = Classes/GraphMachine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +99,8 @@
 		1CD8FFA71B7EA705002E6108 /* GrappleSkunk */ = {
 			isa = PBXGroup;
 			children = (
+				1CD8FFD51B7EAF5E002E6108 /* Classes */,
+				1CD8FFD11B7EAF19002E6108 /* Categories */,
 				1CD8FFAA1B7EA705002E6108 /* AppDelegate.h */,
 				1CD8FFAB1B7EA705002E6108 /* AppDelegate.m */,
 				1CD8FFAF1B7EA705002E6108 /* ViewController.h */,
@@ -117,6 +137,40 @@
 				1CD8FFC31B7EA705002E6108 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1CD8FFD11B7EAF19002E6108 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1CD8FFD21B7EAF55002E6108 /* NSBezierPath+Extras.h */,
+				1CD8FFD31B7EAF55002E6108 /* NSBezierPath+Extras.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		1CD8FFD51B7EAF5E002E6108 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1CD8FFD61B7EB178002E6108 /* Spots */,
+				1CD8FFCE1B7EA7B9002E6108 /* MGGraphView.h */,
+				1CD8FFCF1B7EA7B9002E6108 /* MGGraphView.m */,
+				1CD8FFE31B7EBFE4002E6108 /* GraphMachine.h */,
+				1CD8FFE41B7EBFE4002E6108 /* GraphMachine.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1CD8FFD61B7EB178002E6108 /* Spots */ = {
+			isa = PBXGroup;
+			children = (
+				1CD8FFD71B7EB18B002E6108 /* SpotControlView.h */,
+				1CD8FFD81B7EB18B002E6108 /* SpotControlView.m */,
+				1CD8FFD91B7EB18B002E6108 /* SpotViewEntity.h */,
+				1CD8FFDA1B7EB18B002E6108 /* SpotViewEntity.m */,
+				1CD8FFDB1B7EB18B002E6108 /* ViewEntity.h */,
+				1CD8FFDC1B7EB18B002E6108 /* ViewEntity.m */,
+			);
+			name = Spots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +272,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CD8FFDF1B7EB18B002E6108 /* ViewEntity.m in Sources */,
 				1CD8FFB41B7EA705002E6108 /* GrappleSkunk.xcdatamodeld in Sources */,
+				1CD8FFE51B7EBFE4002E6108 /* GraphMachine.m in Sources */,
+				1CD8FFDE1B7EB18B002E6108 /* SpotViewEntity.m in Sources */,
+				1CD8FFD41B7EAF55002E6108 /* NSBezierPath+Extras.m in Sources */,
+				1CD8FFDD1B7EB18B002E6108 /* SpotControlView.m in Sources */,
+				1CD8FFD01B7EA7B9002E6108 /* MGGraphView.m in Sources */,
 				1CD8FFB11B7EA705002E6108 /* ViewController.m in Sources */,
 				1CD8FFAE1B7EA705002E6108 /* main.m in Sources */,
 				1CD8FFAC1B7EA705002E6108 /* AppDelegate.m in Sources */,

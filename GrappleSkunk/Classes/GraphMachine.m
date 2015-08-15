@@ -28,6 +28,7 @@ typedef NSComparisonResult (^CompareBlock)(id, id);
 {
     self = [super init];
     if (self) {
+        _dataPoints = [NSMutableArray new];
         _sortComparator = ^(id obj1, id obj2) {
             NSNumber *y1 = (NSNumber*)((NSDictionary*)obj1)[kYValKey];
             NSNumber *y2 = (NSNumber*)((NSDictionary*)obj2)[kYValKey];
@@ -65,6 +66,11 @@ typedef NSComparisonResult (^CompareBlock)(id, id);
                                       usingComparator:self.sortComparator];
     
     [self.dataPoints insertObject:newDataPoint atIndex:sortedIndex];
+}
+
+- (void)clear
+{
+    self.dataPoints = [NSMutableArray new];
 }
 
 @end

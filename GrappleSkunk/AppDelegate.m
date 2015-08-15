@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "GrappleSkunkEngine.h"
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) GrappleSkunkEngine* gsEngine;
 
 - (IBAction)saveAction:(id)sender;
 
@@ -18,6 +21,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    
+    _gsEngine = [GrappleSkunkEngine new];
+    [_gsEngine addDataFromProjectFile:@"stockprices"];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

@@ -15,4 +15,6 @@
                          label:(NSString*)label
                        auxView:(NSView*)auxView;
 
+- (void)clear;
+
 @end

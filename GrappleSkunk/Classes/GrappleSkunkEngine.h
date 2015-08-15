@@ -17,5 +17,6 @@
 - (void)setDefaultGridIntervals;
 
 - (NSBezierPath*)getGridPathForFrame:(CGRect)inFrame;
+- (NSArray*)getSortedArrayScaledToFrame:(CGRect)inFrame;
 
 @end

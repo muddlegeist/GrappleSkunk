@@ -41,6 +41,8 @@
     NSBezierPath *theGridPath = [[AppDelegate sharedAppDelegate].gsEngine getGridPathForFrame:graphFrame];
     
     self.theGraphView.theGridPath = theGridPath;
+    [self.theGraphView clearDataPoints];
+    [self.theGraphView addDataPoints:[[AppDelegate sharedAppDelegate].gsEngine getSortedArrayScaledToFrame:graphFrame]];
 }
 
 @end

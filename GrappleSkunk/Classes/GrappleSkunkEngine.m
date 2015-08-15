@@ -90,8 +90,17 @@ static NSString * const kDemoJSONDataCloseKey = @"close";
 
 - (NSBezierPath*)getGridPathForFrame:(CGRect)inFrame
 {
-    NSBezierPath *path = [self.theGraphMachine createGridPath:inFrame];
+    self.theGraphMachine.calculationFrame = inFrame;
+    
+    NSBezierPath *path = [self.theGraphMachine createGridPathForFrame];
     return path;
+}
+
+- (NSArray*)getSortedArrayScaledToFrame:(CGRect)inFrame
+{
+    self.theGraphMachine.calculationFrame = inFrame;
+    
+    return [self.theGraphMachine getSortedArrayScaledToFrame];
 }
 
 @end

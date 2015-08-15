@@ -12,4 +12,8 @@
 
 @property (strong, nonatomic) NSBezierPath *theGridPath;
 
+- (void)addDataPoints:(NSArray*)dataPointsArray;
+- (void)clearDataPoints;
+
+
 @end

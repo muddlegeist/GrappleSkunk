@@ -9,6 +9,7 @@
 #import "MGGraphView.h"
 #import "SpotControlView.h"
 #import "AppDelegate.h"
+#import "DataPointDictionaryKeys.h"
 
 @interface MGGraphView ()
 
@@ -24,11 +25,11 @@
 {
     //_gridView = [[NSView alloc] initWithFrame:self.bounds];
     //_lineView = [[NSView alloc] initWithFrame:self.bounds];
-    //_spotView = [[SpotControlView alloc] initWithFrame:self.bounds];
+    _spotView = [[SpotControlView alloc] initWithFrame:self.bounds];
     
     //[self addSubview:self.gridView];
     //[self addSubview:self.lineView];
-    //[self addSubview:self.spotView];
+    [self addSubview:self.spotView];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -54,6 +55,7 @@
     
     if ([self inLiveResize])
     {
+        self.spotView.frame = self.bounds;
         [[NSNotificationCenter defaultCenter]
          postNotificationName:kRequestGraphRecalcNotification
          object:self];
@@ -74,6 +76,25 @@
     _theGridPath = theGridPath;
     
     self.needsDisplay = YES;
+}
+
+- (void)addDataPoints:(NSArray*)dataPointsArray
+{
+    for( id item in dataPointsArray )
+    {
+        NSDictionary *itemDict = (NSDictionary*)item;
+        
+        CGFloat xFramePoint = ((NSNumber*)((NSDictionary*)itemDict)[kXCoordinateKey]).floatValue;
+        CGFloat yFramePoint = ((NSNumber*)((NSDictionary*)itemDict)[kYCoordinateKey]).floatValue;
+        
+        NSPoint spotPoint = CGPointMake(xFramePoint, yFramePoint);
+        [self.spotView addSpot:spotPoint  withDataDictionary:itemDict];
+    }
+}
+
+- (void)clearDataPoints
+{
+    [self.spotView removeAllSpots];
 }
 
 @end

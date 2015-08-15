@@ -63,6 +63,7 @@
 		1CD8FFE61B7ED4B6002E6108 /* GrappleSkunkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrappleSkunkEngine.h; path = Classes/GrappleSkunkEngine.h; sourceTree = "<group>"; };
 		1CD8FFE71B7ED4B6002E6108 /* GrappleSkunkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrappleSkunkEngine.m; path = Classes/GrappleSkunkEngine.m; sourceTree = "<group>"; };
 		1CD8FFEA1B7ED8B8002E6108 /* stockprices.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = stockprices.json; path = "Test Data/stockprices.json"; sourceTree = "<group>"; };
+		1CD8FFEF1B7FD6C7002E6108 /* DataPointDictionaryKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataPointDictionaryKeys.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +111,7 @@
 				1CD8FFAB1B7EA705002E6108 /* AppDelegate.m */,
 				1CD8FFAF1B7EA705002E6108 /* ViewController.h */,
 				1CD8FFB01B7EA705002E6108 /* ViewController.m */,
+				1CD8FFEF1B7FD6C7002E6108 /* DataPointDictionaryKeys.h */,
 				1CD8FFB51B7EA705002E6108 /* Images.xcassets */,
 				1CD8FFB71B7EA705002E6108 /* Main.storyboard */,
 				1CD8FFB21B7EA705002E6108 /* GrappleSkunk.xcdatamodeld */,

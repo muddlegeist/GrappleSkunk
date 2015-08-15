@@ -15,7 +15,7 @@ typedef enum{ defaultState, overState, downState, disabledState } EntityStateTyp
 @property (assign, nonatomic) EntityStateType entityState;
 @property (assign, nonatomic) NSPoint viewPoint;
 @property (assign, nonatomic) CGFloat radius;
-@property (assign, nonatomic) int userData;
+@property (strong, nonatomic) NSDictionary* spotData;
 
 - (id)initWithRadius: (CGFloat)r;
 - (void)draw;

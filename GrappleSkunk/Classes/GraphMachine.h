@@ -10,6 +10,8 @@
 
 @interface GraphMachine : NSObject
 
+@property (assign, nonatomic) CGRect calculationFrame;
+
 - (void)addDataPointWithXValue:(CGFloat)xValue
                         yValue:(CGFloat)yValue
                          label:(NSString*)label
@@ -22,8 +24,11 @@ andMinYGraphIntervalPoint:(CGFloat)yIvalPoint;
 
 - (void)clear;
 
-- (NSBezierPath*)createGridPath:(CGRect)inFrame;
+- (NSBezierPath*)createGridPathForFrame;
+- (NSArray*)getSortedArrayScaledToFrame;
 
 - (CGPoint)getMinimumConglomeratePoint;
+
+
 
 @end

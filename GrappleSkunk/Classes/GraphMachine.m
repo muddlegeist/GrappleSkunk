@@ -7,11 +7,7 @@
 //
 
 #import "GraphMachine.h"
-
-static NSString * const kXValKey = @"kXValKey";
-static NSString * const kYValKey = @"kYValKey";
-static NSString * const kLabelKey = @"kLabelKey";
-static NSString * const kAuxViewKey = @"kAuxViewKey";
+#import "DataPointDictionaryKeys.h"
 
 static const CGFloat kGraphXAxisRatio = 0.9; //the x span takes up 80% of the frame width
 static const CGFloat kGraphYAxisRatio = 0.9; //the y span takes up 80% of the frame height
@@ -33,8 +29,41 @@ typedef NSComparisonResult (^CompareBlock)(id, id);
 @property (assign, nonatomic) CGFloat minDataPointY;
 @property (assign, nonatomic) CGFloat maxDataPointY;
 
+@property (assign, nonatomic) BOOL scratchDataCalculated;
+
+//scratch paper properties - for simplifying the math in the methods
 @property (assign, nonatomic) CGFloat xSpan;
 @property (assign, nonatomic) CGFloat ySpan;
+
+@property (assign, nonatomic) CGFloat frameWidth;
+@property (assign, nonatomic) CGFloat frameHeight;
+
+@property (assign, nonatomic) CGFloat graphDisplayFrameWidth;
+@property (assign, nonatomic) CGFloat graphDisplayFrameHeight;
+
+@property (assign, nonatomic) CGFloat graphDisplayMarginX;
+@property (assign, nonatomic) CGFloat graphDisplayMarginY;
+
+@property (assign, nonatomic) CGFloat graphDisplayFrameMinX;
+@property (assign, nonatomic) CGFloat graphDisplayFrameMinY;
+
+@property (assign, nonatomic) CGFloat graphDisplayFrameMaxX;
+@property (assign, nonatomic) CGFloat graphDisplayFrameMaxY;
+
+@property (assign, nonatomic) CGFloat xRatioDisplayToData;
+@property (assign, nonatomic) CGFloat yRatioDisplayToData;
+
+@property (assign, nonatomic) CGFloat fullFrameWidthDataSpanX;
+@property (assign, nonatomic) CGFloat fullFrameHeightDataSpanY;
+
+@property (assign, nonatomic) CGFloat fullFrameWidthDataMarginX;
+@property (assign, nonatomic) CGFloat fullFrameHeightDataMarginY;
+
+@property (assign, nonatomic) CGFloat xGridDataValueMin;
+@property (assign, nonatomic) CGFloat xGridDataValueMax;
+
+@property (assign, nonatomic) CGFloat yGridDataValueMin;
+@property (assign, nonatomic) CGFloat yGridDataValueMax;
 
 @end
 
@@ -125,6 +154,49 @@ andMinYGraphIntervalPoint:(CGFloat)yIvalPoint
 
     self.xSpan = self.maxDataPointX - self.minDataPointX;
     self.ySpan = self.maxDataPointY - self.minDataPointY;
+    
+    [self doScratchCalculations];
+}
+
+- (void)doScratchCalculations
+{
+    if( self.xSpan == 0.0 || self.ySpan == 0.0 ) return; //error condition
+    
+    //precalculate some useful stuff
+    if( !CGRectEqualToRect(self.calculationFrame, CGRectZero) )
+    {
+        self.frameWidth = self.calculationFrame.size.width;
+        self.frameHeight = self.calculationFrame.size.height;
+        
+        self.graphDisplayFrameWidth = self.frameWidth * kGraphXAxisRatio;
+        self.graphDisplayFrameHeight = self.frameHeight * kGraphYAxisRatio;
+        
+        self.graphDisplayMarginX = ((self.frameWidth - self.graphDisplayFrameWidth) / 2.0);
+        self.graphDisplayMarginY = ((self.frameHeight - self.graphDisplayFrameHeight) / 2.0);
+        
+        self.graphDisplayFrameMinX = self.calculationFrame.origin.x + self.graphDisplayMarginX;
+        self.graphDisplayFrameMinY = self.calculationFrame.origin.y + self.graphDisplayMarginY;
+        
+        self.graphDisplayFrameMaxX = self.calculationFrame.origin.x + self.frameWidth - self.graphDisplayMarginX;
+        self.graphDisplayFrameMaxY = self.calculationFrame.origin.y + self.frameHeight - self.graphDisplayMarginY;
+        
+        self.xRatioDisplayToData = self.graphDisplayFrameWidth / self.xSpan;
+        self.yRatioDisplayToData = self.graphDisplayFrameHeight / self.ySpan;
+        
+        self.fullFrameWidthDataSpanX = self.xSpan / kGraphXAxisRatio;
+        self.fullFrameHeightDataSpanY = self.ySpan / kGraphYAxisRatio;
+        
+        self.fullFrameWidthDataMarginX = ((self.fullFrameWidthDataSpanX - self.xSpan) / 2.0);
+        self.fullFrameHeightDataMarginY = ((self.fullFrameHeightDataSpanY - self.ySpan) / 2.0);
+        
+        self.xGridDataValueMin = self.minDataPointX - self.fullFrameWidthDataMarginX;
+        self.xGridDataValueMax = self.maxDataPointX + self.fullFrameWidthDataMarginX;
+        
+        self.yGridDataValueMin = self.minDataPointY - self.fullFrameHeightDataMarginY;
+        self.yGridDataValueMax = self.maxDataPointY + self.fullFrameHeightDataMarginY;
+        
+        self.scratchDataCalculated = YES;
+    }
 }
 
 - (void)calculateExtrema
@@ -145,98 +217,108 @@ andMinYGraphIntervalPoint:(CGFloat)yIvalPoint
 
 - (void)clear
 {
-    self.dataPoints = [NSMutableArray new];
+    _dataPoints = [NSMutableArray new];
     
-    self.xInterval = 0.0;
-    self.xMinIntervalPoint = 0.0;
-    self.yInterval = 0.0;
-    self.yMinIntervalPoint = 0.0;
+    _xInterval = 0.0;
+    _xMinIntervalPoint = 0.0;
+    _yInterval = 0.0;
+    _yMinIntervalPoint = 0.0;
     
-    self.minDataPointX = HUGE_VALF;
-    self.maxDataPointX = -HUGE_VALF;
-    self.minDataPointY = HUGE_VALF;
-    self.maxDataPointY = -HUGE_VALF;
+    _minDataPointX = HUGE_VALF;
+    _maxDataPointX = -HUGE_VALF;
+    _minDataPointY = HUGE_VALF;
+    _maxDataPointY = -HUGE_VALF;
     
-    self.xSpan = 0.0;
-    self.ySpan = 0.0;
+    _xSpan = 0.0;
+    _ySpan = 0.0;
+    
+    _calculationFrame = CGRectZero;
+    
+    _frameWidth = 0.0;
+    _frameHeight = 0.0;
+    _graphDisplayFrameWidth = 0.0;
+    _graphDisplayFrameHeight = 0.0;
+    _graphDisplayMarginX = 0.0;
+    _graphDisplayMarginY = 0.0;
+    _graphDisplayFrameMinX = 0.0;
+    _graphDisplayFrameMinY = 0.0;
+    _graphDisplayFrameMaxX = 0.0;
+    _graphDisplayFrameMaxY = 0.0;
+    _xRatioDisplayToData = 0.0;
+    _yRatioDisplayToData = 0.0;
+    _fullFrameWidthDataSpanX = 0.0;
+    _fullFrameHeightDataSpanY = 0.0;
+    _fullFrameWidthDataMarginX = 0.0;
+    _fullFrameHeightDataMarginY = 0.0;
+    _xGridDataValueMin = 0.0;
+    _xGridDataValueMax = 0.0;
+    _yGridDataValueMin = 0.0;
+    _yGridDataValueMax = 0.0;
+    
+    _scratchDataCalculated = NO;
 }
 
-- (NSBezierPath*)createGridPath:(CGRect)inFrame
+- (void)setCalculationFrame:(CGRect)calculationFrame
 {
-    if( self.xSpan == 0.0 || self.ySpan == 0.0 ) return nil; //error condition
+    _calculationFrame = calculationFrame;
     
-    CGFloat frameWidth = inFrame.size.width;
-    CGFloat frameHeight = inFrame.size.height;
+    [self doScratchCalculations];
+}
+
+- (NSBezierPath*)createGridPathForFrame
+{
+    if( CGRectEqualToRect(self.calculationFrame, CGRectZero) )
+    {
+        return nil;
+    }
     
-    CGFloat graphDisplayFrameWidth = frameWidth * kGraphXAxisRatio;
-    CGFloat graphDisplayFrameHeight = frameHeight * kGraphYAxisRatio;
-    
-    //CGFloat graphDisplayMarginX = ((frameWidth - graphDisplayFrameWidth) / 2.0);
-    //CGFloat graphDisplayMarginY = ((frameHeight - graphDisplayFrameHeight) / 2.0);
-    
-    //CGFloat graphDisplayFrameMinX = inFrame.origin.x + graphDisplayMarginX;
-    //CGFloat graphDisplayFrameMinY = inFrame.origin.y + graphDisplayMarginY;
-    
-    //CGFloat graphDisplayFrameMaxX = inFrame.origin.x + frameWidth - graphDisplayMarginX;
-    //CGFloat graphDisplayFrameMaxY = inFrame.origin.y + frameHeight - graphDisplayMarginY;
-    
-    CGFloat xRatioDisplayToData = graphDisplayFrameWidth / self.xSpan;
-    CGFloat yRatioDisplayToData = graphDisplayFrameHeight / self.ySpan;
-    
-    CGFloat fullFrameWidthDataSpanX = self.xSpan / kGraphXAxisRatio;
-    CGFloat fullFrameHeightDataSpanY = self.ySpan / kGraphYAxisRatio;
-    
-    CGFloat fullFrameWidthDataMarginX = ((fullFrameWidthDataSpanX - self.xSpan) / 2.0);
-    CGFloat fullFrameHeightDataMarginY = ((fullFrameHeightDataSpanY - self.ySpan) / 2.0);
-    
-    CGFloat xGridDataValueMin = self.minDataPointX - fullFrameWidthDataMarginX;
-    CGFloat xGridDataValueMax = self.maxDataPointX + fullFrameWidthDataMarginX;
-    
-    CGFloat yGridDataValueMin = self.minDataPointY - fullFrameHeightDataMarginY;
-    CGFloat yGridDataValueMax = self.maxDataPointY + fullFrameHeightDataMarginY;
+    if( !self.scratchDataCalculated )
+    {
+        [self doScratchCalculations];
+    }
     
     NSBezierPath* thePath = [NSBezierPath bezierPath];
     
     CGFloat xGridDataValue = self.xMinIntervalPoint;
     
-    while( xGridDataValue <= xGridDataValueMax )
+    while( xGridDataValue <= self.xGridDataValueMax )
     {
-        CGFloat frameX = inFrame.origin.x + ((xGridDataValue - xGridDataValueMin) * xRatioDisplayToData);
-        [thePath moveToPoint: CGPointMake( frameX, inFrame.origin.y)];
-        [thePath lineToPoint: CGPointMake( frameX, inFrame.origin.y + frameHeight)];
+        CGFloat frameX = self.calculationFrame.origin.x + ((xGridDataValue - self.xGridDataValueMin) * self.xRatioDisplayToData);
+        [thePath moveToPoint: CGPointMake( frameX, self.calculationFrame.origin.y)];
+        [thePath lineToPoint: CGPointMake( frameX, self.calculationFrame.origin.y + self.frameHeight)];
         
         xGridDataValue += self.xInterval;
     }
     
     xGridDataValue = self.xMinIntervalPoint - self.xInterval;
     
-    while( xGridDataValue >= xGridDataValueMin )
+    while( xGridDataValue >= self.xGridDataValueMin )
     {
-        CGFloat frameX = inFrame.origin.x + ((xGridDataValue - xGridDataValueMin) * xRatioDisplayToData);
-        [thePath moveToPoint: CGPointMake( frameX, inFrame.origin.y)];
-        [thePath lineToPoint: CGPointMake( frameX, inFrame.origin.y + frameHeight)];
+        CGFloat frameX = self.calculationFrame.origin.x + ((xGridDataValue - self.xGridDataValueMin) * self.xRatioDisplayToData);
+        [thePath moveToPoint: CGPointMake( frameX, self.calculationFrame.origin.y)];
+        [thePath lineToPoint: CGPointMake( frameX, self.calculationFrame.origin.y + self.frameHeight)];
         
         xGridDataValue -= self.xInterval;
     }
     
     CGFloat yGridDataValue = self.yMinIntervalPoint;
     
-    while( yGridDataValue <= yGridDataValueMax )
+    while( yGridDataValue <= self.yGridDataValueMax )
     {
-        CGFloat frameY = inFrame.origin.y + ((yGridDataValue - yGridDataValueMin) * yRatioDisplayToData);
-        [thePath moveToPoint: CGPointMake( inFrame.origin.x, frameY )];
-        [thePath lineToPoint: CGPointMake( inFrame.origin.x + frameWidth, frameY )];
+        CGFloat frameY = self.calculationFrame.origin.y + ((yGridDataValue - self.yGridDataValueMin) * self.yRatioDisplayToData);
+        [thePath moveToPoint: CGPointMake( self.calculationFrame.origin.x, frameY )];
+        [thePath lineToPoint: CGPointMake( self.calculationFrame.origin.x + self.frameWidth, frameY )];
         
         yGridDataValue += self.yInterval;
     }
     
     yGridDataValue = self.yMinIntervalPoint - self.yInterval;
     
-    while( yGridDataValue >= yGridDataValueMin )
+    while( yGridDataValue >= self.yGridDataValueMin )
     {
-        CGFloat frameY = inFrame.origin.y + ((yGridDataValue - yGridDataValueMin) * yRatioDisplayToData);
-        [thePath moveToPoint: CGPointMake( inFrame.origin.x, frameY )];
-        [thePath lineToPoint: CGPointMake( inFrame.origin.x + frameWidth, frameY )];
+        CGFloat frameY = self.calculationFrame.origin.y + ((yGridDataValue - self.yGridDataValueMin) * self.yRatioDisplayToData);
+        [thePath moveToPoint: CGPointMake( self.calculationFrame.origin.x, frameY )];
+        [thePath lineToPoint: CGPointMake( self.calculationFrame.origin.x + self.frameWidth, frameY )];
         
         yGridDataValue -= self.yInterval;
     }
@@ -244,9 +326,48 @@ andMinYGraphIntervalPoint:(CGFloat)yIvalPoint
     return thePath;
 }
 
+- (NSArray*)getSortedArrayScaledToFrame
+{
+    if( CGRectEqualToRect(self.calculationFrame, CGRectZero) )
+    {
+        return nil;
+    }
+    
+    if( !self.scratchDataCalculated )
+    {
+        [self doScratchCalculations];
+    }
+    
+    NSMutableArray *mutableArray = [NSMutableArray new];
+    
+    for( id item in self.dataPoints )
+    {
+        NSDictionary *itemDict = (NSDictionary*)item;
+        
+        CGFloat xDataPoint = ((NSNumber*)((NSDictionary*)itemDict)[kXValKey]).floatValue;
+        CGFloat yDataPoint = ((NSNumber*)((NSDictionary*)itemDict)[kYValKey]).floatValue;
+        
+        CGFloat xFramePoint = self.graphDisplayMarginX + ((xDataPoint - self.minDataPointX) * self.xRatioDisplayToData);
+        CGFloat yFramePoint = self.graphDisplayMarginY + ((yDataPoint - self.minDataPointY) * self.yRatioDisplayToData);
+        
+        NSMutableDictionary *spotDictionary = [itemDict mutableCopy];
+        spotDictionary[kXCoordinateKey] = [NSNumber numberWithFloat:xFramePoint];
+        spotDictionary[kYCoordinateKey] = [NSNumber numberWithFloat:yFramePoint];
+        
+        [mutableArray addObject:spotDictionary];
+    }
+
+    return [NSArray arrayWithArray:mutableArray];
+}
+
 - (CGPoint)getMinimumConglomeratePoint
 {
     return CGPointMake( self.minDataPointX, self.minDataPointY );
+}
+
+- (NSArray*)getSortedArray
+{
+    return [NSArray arrayWithArray:self.dataPoints];
 }
 
 @end

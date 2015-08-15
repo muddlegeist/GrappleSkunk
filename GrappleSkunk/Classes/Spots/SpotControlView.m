@@ -33,7 +33,7 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
 	[[NSColor blackColor] setStroke];
-	[[NSColor whiteColor] setFill];
+	[[NSColor clearColor] setFill];
 	
 	[NSBezierPath fillRect:dirtyRect];
     
@@ -43,42 +43,22 @@
     }
 }
 
-- (SpotViewEntity*)createAndAddSpot:(NSPoint)pt
+- (void)addSpot:(NSPoint)pt withDataDictionary:(NSDictionary*)spotDictionary
 {
 	SpotViewEntity* newSpot = [SpotViewEntity new];
 	
-	[newSpot setViewPoint:pt];
+	newSpot.viewPoint = pt;
+    newSpot.spotData = spotDictionary;
 	
 	[self.spots addObject:newSpot];
-	
-	return newSpot;
 }
 
-- (SpotViewEntity*)createAndAddSpot:(NSPoint)pt withRadius:(CGFloat)radius
+- (void)addSpot:(NSPoint)pt withRadius:(CGFloat)radius withDataDictionary:(NSDictionary*)spotDictionary
 {
 	SpotViewEntity* newSpot = [[SpotViewEntity alloc] initWithRadius:radius];
 	
-	[newSpot setViewPoint:pt];
-	
-	[self.spots addObject:newSpot];
-	
-	return newSpot;
-}
-
-- (void)addSpot:(NSPoint)pt
-{
-	SpotViewEntity* newSpot = [SpotViewEntity new];
-	
-	[newSpot setViewPoint:pt];
-	
-	[self.spots addObject:newSpot];
-}
-
-- (void)addSpot:(NSPoint)pt withRadius:(CGFloat)radius
-{
-	SpotViewEntity* newSpot = [[SpotViewEntity alloc] initWithRadius:radius];
-	
-	[newSpot setViewPoint:pt];
+	newSpot.viewPoint = pt;
+    newSpot.spotData = spotDictionary;
 	
 	[self.spots addObject:newSpot];
 }
@@ -86,6 +66,11 @@
 - (void)removeSpot:(SpotViewEntity*)victimSpot
 {
     [self.spots removeObject:victimSpot];
+}
+
+- (void)removeAllSpots
+{
+    [self.spots removeAllObjects];
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent

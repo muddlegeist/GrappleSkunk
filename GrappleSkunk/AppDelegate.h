@@ -12,6 +12,7 @@
 extern NSString* const kGraphDataChangedNotification;
 extern NSString* const kRedrawExistingDataNotification;
 extern NSString* const kMainWindowDecodedNotification;
+extern NSString* const kDoGraphLineAnimationNotification;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 

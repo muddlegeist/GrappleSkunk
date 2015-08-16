@@ -11,6 +11,7 @@
 NSString* const kGraphDataChangedNotification = @"kGraphDataChangedNotification";
 NSString* const kRedrawExistingDataNotification = @"kRedrawExistingDataNotification";
 NSString* const kMainWindowDecodedNotification = @"kMainWindowDecodedNotification";
+NSString* const kDoGraphLineAnimationNotification = @"kDoGraphLineAnimationNotification";
 
 @interface AppDelegate ()
 

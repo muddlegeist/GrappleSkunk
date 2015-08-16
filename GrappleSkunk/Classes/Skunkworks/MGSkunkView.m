@@ -9,6 +9,7 @@
 #import "MGSkunkView.h"
 #import "GrappleSkunkConstants.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
 
 @interface MGSkunkView ()
 
@@ -60,7 +61,7 @@
     
     self.theSkunkOffscreenFrame2 = CGRectMake(viewBounds.origin.x + viewBounds.size.width + 1.0, viewBounds.origin.y + viewBounds.size.height - skunkTopMargin - skunkHeight, skunkWidth, skunkHeight);
     
-    self.theSkunkCenterscreenFrame = CGRectMake(viewBounds.origin.x + (viewBounds.size.width/2.0) - (skunkWidth/2.0), viewBounds.origin.y + viewBounds.size.height - skunkTopMargin - skunkHeight, skunkWidth, skunkHeight);
+    self.theSkunkCenterscreenFrame = CGRectMake(viewBounds.origin.x + (viewBounds.size.width/2.0)/* - (skunkWidth/2.0)*/, viewBounds.origin.y + viewBounds.size.height - skunkTopMargin - skunkHeight, skunkWidth, skunkHeight);
     
     if( !self.theSkunkView )
     {
@@ -118,11 +119,14 @@
 {
     if( flag )
     {
-        NSLog(@"ANIMATION COMPLETED: SUCCESS");
-        
         if( self.animationIndex == 0 )
         {
             self.theSkunkView.frame = self.theSkunkCenterscreenFrame;
+            
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:kDoGraphLineAnimationNotification
+             object:self];
+            
             [self secondaryAnimation];
         }
         else if( self.animationIndex == 1 )
@@ -130,16 +134,6 @@
             self.theSkunkView.frame = self.theSkunkOffscreenFrame1;
         }
     }
-    else
-    {
-        NSLog(@"ANIMATION COMPLETED: FAILURE");
-    }
-}
-
-- (void)animationCompleted
-{
-    //self.theSkunkView.frame = self.theSkunkOffscreenFrame1;
-    NSLog(@"ANIMATION COMPLETED");
 }
 
 - (void)drawRect:(NSRect)dirtyRect {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1CADB43E1B8108D300A4B053 /* MGSkunkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADB43D1B8108D300A4B053 /* MGSkunkView.m */; };
 		1CADB4411B810AFD00A4B053 /* skunk-clip-art-skunk-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CADB4401B810AFD00A4B053 /* skunk-clip-art-skunk-6.png */; };
+		1CADB4441B812B8C00A4B053 /* MGGraphLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADB4431B812B8C00A4B053 /* MGGraphLineView.m */; };
 		1CD800081B8043EE002E6108 /* MMDDFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD800071B8043EE002E6108 /* MMDDFormatter.m */; };
 		1CD8000B1B804589002E6108 /* DollarFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8000A1B804589002E6108 /* DollarFormatter.m */; };
 		1CD8FFAC1B7EA705002E6108 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFAB1B7EA705002E6108 /* AppDelegate.m */; };
@@ -46,6 +47,8 @@
 		1CADB43C1B8108D300A4B053 /* MGSkunkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSkunkView.h; path = Classes/Skunkworks/MGSkunkView.h; sourceTree = "<group>"; };
 		1CADB43D1B8108D300A4B053 /* MGSkunkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSkunkView.m; path = Classes/Skunkworks/MGSkunkView.m; sourceTree = "<group>"; };
 		1CADB4401B810AFD00A4B053 /* skunk-clip-art-skunk-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skunk-clip-art-skunk-6.png"; sourceTree = "<group>"; };
+		1CADB4421B812B8C00A4B053 /* MGGraphLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGGraphLineView.h; path = Classes/MGGraphLineView.h; sourceTree = "<group>"; };
+		1CADB4431B812B8C00A4B053 /* MGGraphLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGGraphLineView.m; path = Classes/MGGraphLineView.m; sourceTree = "<group>"; };
 		1CD800011B8036A5002E6108 /* GrappleSkunkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrappleSkunkConstants.h; sourceTree = "<group>"; };
 		1CD800061B8043EE002E6108 /* MMDDFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDDFormatter.h; sourceTree = "<group>"; };
 		1CD800071B8043EE002E6108 /* MMDDFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDDFormatter.m; sourceTree = "<group>"; };
@@ -227,6 +230,8 @@
 				1CD8FFE71B7ED4B6002E6108 /* GrappleSkunkEngine.m */,
 				1CD8FFFD1B802F89002E6108 /* PathFactory.h */,
 				1CD8FFFE1B802F89002E6108 /* PathFactory.m */,
+				1CADB4421B812B8C00A4B053 /* MGGraphLineView.h */,
+				1CADB4431B812B8C00A4B053 /* MGGraphLineView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -369,6 +374,7 @@
 				1CD8000B1B804589002E6108 /* DollarFormatter.m in Sources */,
 				1CD8FFAE1B7EA705002E6108 /* main.m in Sources */,
 				1CD8FFAC1B7EA705002E6108 /* AppDelegate.m in Sources */,
+				1CADB4441B812B8C00A4B053 /* MGGraphLineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,12 +12,12 @@
 #import "DataPointDictionaryKeys.h"
 #import "PathFactory.h"
 #import "MGSkunkView.h"
+#import "MGGraphLineView.h"
 
 @interface MGGraphView ()
 
-//@property (strong, nonatomic) NSView *gridView;
-//@property (strong, nonatomic) NSView *lineView;
 @property (strong, nonatomic) SpotControlView *spotView;
+@property (strong, nonatomic) MGGraphLineView *lineView;
 @property (strong, nonatomic) MGSkunkView *skunkView;
 
 @end
@@ -32,13 +32,11 @@
      name:kMainWindowDecodedNotification
      object:nil];
     
-    //_gridView = [[NSView alloc] initWithFrame:self.bounds];
-    //_lineView = [[NSView alloc] initWithFrame:self.bounds];
+    _lineView = [[MGGraphLineView alloc] initWithFrame:self.bounds];
     _spotView = [[SpotControlView alloc] initWithFrame:self.bounds];
     _skunkView = [[MGSkunkView alloc] initWithFrame:self.bounds];
     
-    //[self addSubview:self.gridView];
-    //[self addSubview:self.lineView];
+    [self addSubview:self.lineView];
     [self addSubview:self.spotView];
     [self addSubview:self.skunkView];
 }
@@ -66,6 +64,7 @@
     
     if ([self inLiveResize])
     {
+        self.lineView.frame = self.bounds;
         self.spotView.frame = self.bounds;
         self.skunkView.frame = self.bounds;
         [[NSNotificationCenter defaultCenter]
@@ -118,6 +117,7 @@
         }
     }
     
+    self.lineView.theGraphPoints = [self getPointsArray];
     [self animateSpots];
     
     if( addPointsForRedraw )
@@ -170,6 +170,7 @@
 
 -(void)handleWindowDecodedNotification
 {
+    self.lineView.frame = self.bounds;
     self.spotView.frame = self.bounds;
     self.skunkView.frame = self.bounds;
     [[NSNotificationCenter defaultCenter]

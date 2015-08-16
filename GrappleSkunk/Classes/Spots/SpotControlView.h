@@ -7,16 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SpotViewEntity.h"
+#import "SpotEntity.h"
 
 @interface SpotControlView : NSView
 
 @property (strong, nonatomic) NSMutableArray* spots;
 @property (strong, nonatomic) id targetID;
 
-- (void)addSpot:(NSPoint)pt withDataDictionary:(NSDictionary*)spotDictionary;
 - (void)addSpot:(NSPoint)pt withRadius:(CGFloat)radius withDataDictionary:(NSDictionary*)spotDictionary;
-- (void)removeSpot:(SpotViewEntity*)victimSpot;
+- (void)removeSpot:(SpotEntity*)victimSpot;
 - (void)removeAllSpots;
 
 - (void)mouseEntered:(NSEvent *)theEvent;

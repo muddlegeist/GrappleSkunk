@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+static const CGFloat kDefaultRadius = 5.0;
+
 @interface MGGraphView : NSView
 
 @property (strong, nonatomic) NSBezierPath *theGridPath;

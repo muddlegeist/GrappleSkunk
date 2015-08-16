@@ -11,8 +11,9 @@
 
 extern NSString* const kGraphDataChangedNotification;
 extern NSString* const kRequestGraphRecalcNotification;
+extern NSString* const kMainWindowDecodedNotification;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;

@@ -16,7 +16,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter]
@@ -24,6 +25,14 @@
      selector:@selector(handleDataChangedNotification)
      name:kGraphDataChangedNotification
      object:nil];
+}
+
+- (void)viewDidAppear
+{
+    [super viewDidAppear];
+    
+    [self.theGraphView.layer setNeedsLayout];
+    [self.theGraphView.layer setNeedsDisplay];
 }
 
 - (void)setRepresentedObject:(id)representedObject {

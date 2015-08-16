@@ -10,6 +10,7 @@
 
 NSString* const kGraphDataChangedNotification = @"kGraphDataChangedNotification";
 NSString* const kRequestGraphRecalcNotification = @"kRequestGraphRecalcNotification";
+NSString* const kMainWindowDecodedNotification = @"kMainWindowDecodedNotification";
 
 @interface AppDelegate ()
 

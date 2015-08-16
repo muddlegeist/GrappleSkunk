@@ -9,8 +9,8 @@
 #import "GraphMachine.h"
 #import "DataPointDictionaryKeys.h"
 
-static const CGFloat kGraphXAxisRatio = 0.9; //the x span takes up 80% of the frame width
-static const CGFloat kGraphYAxisRatio = 0.9; //the y span takes up 80% of the frame height
+static const CGFloat kGraphXAxisRatio = 0.9; //the x span takes up 90% of the frame width
+static const CGFloat kGraphYAxisRatio = 0.7; //the y span takes up 70% of the frame height
 
 typedef NSComparisonResult (^CompareBlock)(id, id);
 

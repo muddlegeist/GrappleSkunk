@@ -23,6 +23,12 @@
 
 - (void)commonInit_MGGraphView
 {
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(handleWindowDecodedNotification)
+     name:kMainWindowDecodedNotification
+     object:nil];
+    
     //_gridView = [[NSView alloc] initWithFrame:self.bounds];
     //_lineView = [[NSView alloc] initWithFrame:self.bounds];
     _spotView = [[SpotControlView alloc] initWithFrame:self.bounds];
@@ -64,7 +70,7 @@
     if( self.theGridPath != nil )
     {
         [self.theGridPath setLineWidth:1.0];
-        [[NSColor blackColor] set];
+        [[NSColor lightGrayColor] set];
         [self.theGridPath stroke];
     }
 }
@@ -88,13 +94,21 @@
         CGFloat yFramePoint = ((NSNumber*)((NSDictionary*)itemDict)[kYCoordinateKey]).floatValue;
         
         NSPoint spotPoint = CGPointMake(xFramePoint, yFramePoint);
-        [self.spotView addSpot:spotPoint  withDataDictionary:itemDict];
+        [self.spotView addSpot:spotPoint  withRadius:kDefaultRadius withDataDictionary:itemDict];
     }
 }
 
 - (void)clearDataPoints
 {
     [self.spotView removeAllSpots];
+}
+
+-(void)handleWindowDecodedNotification
+{
+    self.spotView.frame = self.bounds;
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:kRequestGraphRecalcNotification
+     object:self];
 }
 
 @end

@@ -6,10 +6,17 @@
 //  Copyright (c) 2015 Muddlegeist. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "SpotControlView.h"
-#import "SpotViewEntity.h"
+#import "SpotEntity.h"
 
 @implementation SpotControlView
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -18,6 +25,8 @@
 	{
         _spots = [[NSMutableArray alloc] init];
 		
+        [self setWantsLayer:YES];
+        
 		// Set up tracking areas so we can use mouseEntered and mouseExited
 		int options = NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveInKeyWindow | NSTrackingInVisibleRect;
 		NSTrackingArea *ta;
@@ -30,46 +39,47 @@
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-	[[NSColor blackColor] setStroke];
-	[[NSColor clearColor] setFill];
-	
-	[NSBezierPath fillRect:dirtyRect];
-    
-    for( id item in self.spots )
-    {
-        [(SpotViewEntity*)item draw];
-    }
-}
-
-- (void)addSpot:(NSPoint)pt withDataDictionary:(NSDictionary*)spotDictionary
-{
-	SpotViewEntity* newSpot = [SpotViewEntity new];
-	
-	newSpot.viewPoint = pt;
-    newSpot.spotData = spotDictionary;
-	
-	[self.spots addObject:newSpot];
-}
+//- (void)drawRect:(NSRect)dirtyRect
+//{
+//	[[NSColor blackColor] setStroke];
+//	[[NSColor clearColor] setFill];
+//	
+//	[NSBezierPath fillRect:dirtyRect];
+//    
+//    for( id item in self.spots )
+//    {
+//        [(SpotEntity*)item draw];
+//    }
+//}
 
 - (void)addSpot:(NSPoint)pt withRadius:(CGFloat)radius withDataDictionary:(NSDictionary*)spotDictionary
 {
-	SpotViewEntity* newSpot = [[SpotViewEntity alloc] initWithRadius:radius];
+	SpotEntity* newSpot = [[SpotEntity alloc] initWithRadius:radius];
 	
 	newSpot.viewPoint = pt;
     newSpot.spotData = spotDictionary;
 	
+    newSpot.pathLayer = [CAShapeLayer layer];
+    [newSpot preparePathLayer];
+    
+    [self.layer addSublayer:newSpot.pathLayer];
 	[self.spots addObject:newSpot];
 }
 
-- (void)removeSpot:(SpotViewEntity*)victimSpot
+- (void)removeSpot:(SpotEntity*)victimSpot
 {
+    [victimSpot.pathLayer removeFromSuperlayer];
     [self.spots removeObject:victimSpot];
 }
 
 - (void)removeAllSpots
 {
+    for( id item in self.spots )
+    {
+        SpotEntity *spot = (SpotEntity*)item;
+        [spot.pathLayer removeFromSuperlayer];
+    }
+    
     [self.spots removeAllObjects];
 }
 
@@ -93,7 +103,7 @@
 	
     for( id item in self.spots )
     {
-        SpotViewEntity* entity = (SpotViewEntity*)item;
+        SpotEntity* entity = (SpotEntity*)item;
         
         if( [entity isHit:eventPoint] )
         {

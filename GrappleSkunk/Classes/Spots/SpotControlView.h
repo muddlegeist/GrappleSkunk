@@ -14,12 +14,22 @@
 @property (strong, nonatomic) NSMutableArray* spots;
 @property (strong, nonatomic) id targetID;
 
-- (void)addSpot:(NSPoint)pt withRadius:(CGFloat)radius withDataDictionary:(NSDictionary*)spotDictionary;
+- (void)addSpot:(NSPoint)pt
+     withRadius:(CGFloat)radius
+withDataDictionary:(NSDictionary*)spotDictionary;
+
+- (void)addMovingSpotAtPoint:(NSPoint)originalPt
+         forDestinationPoint:(NSPoint)destinationPt
+                  withRadius:(CGFloat)radius
+          withDataDictionary:(NSDictionary*)spotDictionary;
+
 - (void)removeSpot:(SpotEntity*)victimSpot;
 - (void)removeAllSpots;
 
 - (void)mouseEntered:(NSEvent *)theEvent;
 - (void)mouseExited:(NSEvent *)theEvent;
 - (void)mouseMoved:(NSEvent *)theEvent;
+
+- (void)animateSpots;
 
 @end

@@ -6,11 +6,17 @@
 //  Copyright (c) 2015 Muddlegeist. All rights reserved.
 //
 
+
+#import <QuartzCore/QuartzCore.h>
+
 #import "SpotEntity.h"
 
-@interface MovingSpotEntity : SpotEntity
+@interface MovingSpotEntity : SpotEntity <NSAnimationDelegate>
 
-@property (assign, nonatomic) NSPoint currentPoint;
-@property (assign, nonatomic) NSPoint velocityPoint;
+@property (assign, nonatomic) NSPoint destinationPoint;
+
+- (NSBezierPath*)createPathAtPoint:(NSPoint)spotPoint;
+
+- (void)animateToDestination;
 
 @end

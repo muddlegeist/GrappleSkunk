@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 NSString* const kGraphDataChangedNotification = @"kGraphDataChangedNotification";
-NSString* const kRequestGraphRecalcNotification = @"kRequestGraphRecalcNotification";
+NSString* const kRedrawExistingDataNotification = @"kRedrawExistingDataNotification";
 NSString* const kMainWindowDecodedNotification = @"kMainWindowDecodedNotification";
 
 @interface AppDelegate ()
@@ -26,16 +26,16 @@ NSString* const kMainWindowDecodedNotification = @"kMainWindowDecodedNotificatio
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
     
+    _inRedraw = NO;
     _gsEngine = [GrappleSkunkEngine new];
     [self.gsEngine addDataFromProjectFile:@"stockprices"];
     [self.gsEngine setDefaultGridIntervals];
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
-     selector:@selector(handleRequestGraphRecalcNotification)
-     name:kRequestGraphRecalcNotification
+     selector:@selector(handleRedrawExistingDataNotification)
+     name:kRedrawExistingDataNotification
      object:nil];
     
     [[NSNotificationCenter defaultCenter]
@@ -206,8 +206,10 @@ NSString* const kMainWindowDecodedNotification = @"kMainWindowDecodedNotificatio
 
 #pragma mark - Notification Handling
 
--(void)handleRequestGraphRecalcNotification
+-(void)handleRedrawExistingDataNotification
 {
+    [AppDelegate sharedAppDelegate].inRedraw = YES;
+    
     [[NSNotificationCenter defaultCenter]
      postNotificationName:kGraphDataChangedNotification
      object:self];

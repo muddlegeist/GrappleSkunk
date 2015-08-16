@@ -10,6 +10,7 @@
 
 #import "SpotControlView.h"
 #import "SpotEntity.h"
+#import "MovingSpotEntity.h"
 
 @implementation SpotControlView
 
@@ -64,6 +65,24 @@
     
     [self.layer addSublayer:newSpot.pathLayer];
 	[self.spots addObject:newSpot];
+}
+
+- (void)addMovingSpotAtPoint:(NSPoint)originalPt
+         forDestinationPoint:(NSPoint)destinationPt
+                  withRadius:(CGFloat)radius
+          withDataDictionary:(NSDictionary*)spotDictionary
+{
+    MovingSpotEntity* newSpot = [[MovingSpotEntity alloc] initWithRadius:radius];
+    
+    newSpot.viewPoint = originalPt;
+    newSpot.destinationPoint = destinationPt;
+    newSpot.spotData = spotDictionary;
+    
+    newSpot.pathLayer = [CAShapeLayer layer];
+    [newSpot preparePathLayer];
+    
+    [self.layer addSublayer:newSpot.pathLayer];
+    [self.spots addObject:newSpot];
 }
 
 - (void)removeSpot:(SpotEntity*)victimSpot
@@ -126,5 +145,15 @@
 	}
 }
 
+- (void)animateSpots
+{
+    for( id item in self.spots )
+    {
+        if( [item isKindOfClass:[MovingSpotEntity class]] )
+        {
+            [(MovingSpotEntity*)item animateToDestination];
+        }
+    }
+}
 
 @end

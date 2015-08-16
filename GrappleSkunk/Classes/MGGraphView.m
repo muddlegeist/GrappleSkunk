@@ -63,7 +63,7 @@
     {
         self.spotView.frame = self.bounds;
         [[NSNotificationCenter defaultCenter]
-         postNotificationName:kRequestGraphRecalcNotification
+         postNotificationName:kRedrawExistingDataNotification
          object:self];
     }
     
@@ -86,6 +86,8 @@
 
 - (void)addDataPoints:(NSArray*)dataPointsArray
 {
+    BOOL addPointsForRedraw = [AppDelegate sharedAppDelegate].inRedraw;
+    
     for( id item in dataPointsArray )
     {
         NSDictionary *itemDict = (NSDictionary*)item;
@@ -93,9 +95,30 @@
         CGFloat xFramePoint = ((NSNumber*)((NSDictionary*)itemDict)[kXCoordinateKey]).floatValue;
         CGFloat yFramePoint = ((NSNumber*)((NSDictionary*)itemDict)[kYCoordinateKey]).floatValue;
         
+        NSPoint arbitraryStartPoint = CGPointMake(50.0, 50.0);
         NSPoint spotPoint = CGPointMake(xFramePoint, yFramePoint);
-        [self.spotView addSpot:spotPoint  withRadius:kDefaultRadius withDataDictionary:itemDict];
+        
+        if( addPointsForRedraw )
+        {
+            [self.spotView addSpot:spotPoint  withRadius:kDefaultRadius withDataDictionary:itemDict];
+        }
+        else
+        {
+            [self.spotView addMovingSpotAtPoint:arbitraryStartPoint forDestinationPoint:spotPoint withRadius:kDefaultRadius withDataDictionary:itemDict];
+        }
     }
+    
+    [self animateSpots];
+    
+    if( addPointsForRedraw )
+    {
+        [AppDelegate sharedAppDelegate].inRedraw = NO;
+    }
+}
+
+- (void)animateSpots
+{
+    [self.spotView animateSpots];
 }
 
 - (void)clearDataPoints
@@ -107,7 +130,7 @@
 {
     self.spotView.frame = self.bounds;
     [[NSNotificationCenter defaultCenter]
-     postNotificationName:kRequestGraphRecalcNotification
+     postNotificationName:kGraphDataChangedNotification
      object:self];
 }
 

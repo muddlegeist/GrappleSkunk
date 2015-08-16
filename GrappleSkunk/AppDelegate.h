@@ -10,7 +10,7 @@
 #import "GrappleSkunkEngine.h"
 
 extern NSString* const kGraphDataChangedNotification;
-extern NSString* const kRequestGraphRecalcNotification;
+extern NSString* const kRedrawExistingDataNotification;
 extern NSString* const kMainWindowDecodedNotification;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
@@ -20,6 +20,8 @@ extern NSString* const kMainWindowDecodedNotification;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong, nonatomic) GrappleSkunkEngine* gsEngine;
+
+@property (assign, nonatomic) BOOL inRedraw;
 
 + (AppDelegate*) sharedAppDelegate;
 

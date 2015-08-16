@@ -8,9 +8,7 @@
 
 #import "GraphMachine.h"
 #import "DataPointDictionaryKeys.h"
-
-static const CGFloat kGraphXAxisRatio = 0.9; //the x span takes up 90% of the frame width
-static const CGFloat kGraphYAxisRatio = 0.7; //the y span takes up 70% of the frame height
+#import "GrappleSkunkConstants.h"
 
 typedef NSComparisonResult (^CompareBlock)(id, id);
 
@@ -324,6 +322,80 @@ andMinYGraphIntervalPoint:(CGFloat)yIvalPoint
     }
     
     return thePath;
+}
+
+- (void)drawAxissesInView:(NSView*)view
+{
+    if( CGRectEqualToRect(self.calculationFrame, CGRectZero) )
+    {
+        return;
+    }
+    
+    if( !self.scratchDataCalculated )
+    {
+        [self doScratchCalculations];
+    }
+    
+    CGRect viewBounds = view.bounds;
+    
+    NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRoundedRect:viewBounds xRadius:10 yRadius:10];
+    [textViewSurround setLineWidth:kGraphBorderWidth];
+    [[NSColor blackColor] set];
+    [textViewSurround stroke];
+    
+    CGRect graphFrame = view.bounds;
+    graphFrame.origin.x += kCoordinateMarginWidth;
+    graphFrame.size.width -= kCoordinateMarginWidth;
+    graphFrame.origin.y += kCoordinateMarginHeight;
+    graphFrame.size.height -= kCoordinateMarginHeight;
+    
+    NSBezierPath *graphSurround = [NSBezierPath bezierPathWithRoundedRect:graphFrame xRadius:10 yRadius:10];
+    [graphSurround setLineWidth:kGraphBorderWidth];
+    [graphSurround stroke];
+    
+//    CGFloat xGridDataValue = self.xMinIntervalPoint;
+//    
+//    while( xGridDataValue <= self.xGridDataValueMax )
+//    {
+//        CGFloat frameX = self.calculationFrame.origin.x + ((xGridDataValue - self.xGridDataValueMin) * self.xRatioDisplayToData);
+//        [thePath moveToPoint: CGPointMake( frameX, self.calculationFrame.origin.y)];
+//        [thePath lineToPoint: CGPointMake( frameX, self.calculationFrame.origin.y + self.frameHeight)];
+//        
+//        xGridDataValue += self.xInterval;
+//    }
+//    
+//    xGridDataValue = self.xMinIntervalPoint - self.xInterval;
+//    
+//    while( xGridDataValue >= self.xGridDataValueMin )
+//    {
+//        CGFloat frameX = self.calculationFrame.origin.x + ((xGridDataValue - self.xGridDataValueMin) * self.xRatioDisplayToData);
+//        [thePath moveToPoint: CGPointMake( frameX, self.calculationFrame.origin.y)];
+//        [thePath lineToPoint: CGPointMake( frameX, self.calculationFrame.origin.y + self.frameHeight)];
+//        
+//        xGridDataValue -= self.xInterval;
+//    }
+//    
+//    CGFloat yGridDataValue = self.yMinIntervalPoint;
+//    
+//    while( yGridDataValue <= self.yGridDataValueMax )
+//    {
+//        CGFloat frameY = self.calculationFrame.origin.y + ((yGridDataValue - self.yGridDataValueMin) * self.yRatioDisplayToData);
+//        [thePath moveToPoint: CGPointMake( self.calculationFrame.origin.x, frameY )];
+//        [thePath lineToPoint: CGPointMake( self.calculationFrame.origin.x + self.frameWidth, frameY )];
+//        
+//        yGridDataValue += self.yInterval;
+//    }
+//    
+//    yGridDataValue = self.yMinIntervalPoint - self.yInterval;
+//    
+//    while( yGridDataValue >= self.yGridDataValueMin )
+//    {
+//        CGFloat frameY = self.calculationFrame.origin.y + ((yGridDataValue - self.yGridDataValueMin) * self.yRatioDisplayToData);
+//        [thePath moveToPoint: CGPointMake( self.calculationFrame.origin.x, frameY )];
+//        [thePath lineToPoint: CGPointMake( self.calculationFrame.origin.x + self.frameWidth, frameY )];
+//        
+//        yGridDataValue -= self.yInterval;
+//    }
 }
 
 - (NSArray*)getSortedArrayScaledToFrame

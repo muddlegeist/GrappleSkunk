@@ -18,5 +18,6 @@
 
 - (NSBezierPath*)getGridPathForFrame:(CGRect)inFrame;
 - (NSArray*)getSortedArrayScaledToFrame:(CGRect)inFrame;
+- (void)drawAxissesInView:(NSView*)view;
 
 @end

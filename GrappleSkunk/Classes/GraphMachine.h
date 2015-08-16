@@ -26,6 +26,7 @@ andMinYGraphIntervalPoint:(CGFloat)yIvalPoint;
 
 - (NSBezierPath*)createGridPathForFrame;
 - (NSArray*)getSortedArrayScaledToFrame;
+- (void)drawAxissesInView:(NSView*)view;
 
 - (CGPoint)getMinimumConglomeratePoint;
 

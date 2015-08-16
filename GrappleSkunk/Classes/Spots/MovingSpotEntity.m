@@ -8,6 +8,7 @@
 
 #import "MovingSpotEntity.h"
 #import "NSBezierPath+QuartzPath.h"
+#import "PathFactory.h"
 
 static NSString * const kAnimationKey = @"shapeAnimation";
 
@@ -15,16 +16,7 @@ static NSString * const kAnimationKey = @"shapeAnimation";
 
 - (NSBezierPath*)createPathAtPoint:(NSPoint)spotPoint
 {
-    NSBezierPath * drawPath = [NSBezierPath bezierPath];
-    [drawPath setLineWidth: 1];
-    
-    NSRect circleRect;
-    
-    circleRect.size.width = circleRect.size.height = 2.0 * self.radius;
-    circleRect.origin.x = spotPoint.x - self.radius;
-    circleRect.origin.y = spotPoint.y - self.radius;
-    
-    [drawPath appendBezierPathWithOvalInRect: circleRect];
+    NSBezierPath * drawPath = [PathFactory createCircularPathOfRadius:self.radius atPoint:spotPoint];
     
     return drawPath;
 }

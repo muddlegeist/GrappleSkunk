@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import "GrappleSkunkConstants.h"
 
 @implementation ViewController
 
@@ -46,6 +47,11 @@
 -(void)handleDataChangedNotification
 {
     CGRect graphFrame = self.theGraphView.bounds;
+    graphFrame.origin.x += kCoordinateMarginWidth;
+    graphFrame.size.width -= kCoordinateMarginWidth;
+    graphFrame.origin.y += kCoordinateMarginHeight;
+    graphFrame.size.height -= kCoordinateMarginHeight;
+    
     
     NSBezierPath *theGridPath = [[AppDelegate sharedAppDelegate].gsEngine getGridPathForFrame:graphFrame];
     

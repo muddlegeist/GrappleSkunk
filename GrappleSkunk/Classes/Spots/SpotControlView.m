@@ -11,6 +11,7 @@
 #import "SpotControlView.h"
 #import "SpotEntity.h"
 #import "MovingSpotEntity.h"
+#import "GrappleSkunkConstants.h"
 
 @implementation SpotControlView
 
@@ -57,7 +58,7 @@
 {
 	SpotEntity* newSpot = [[SpotEntity alloc] initWithRadius:radius];
 	
-	newSpot.viewPoint = pt;
+    newSpot.viewPoint = CGPointMake(pt.x + kCoordinateMarginWidth, pt.y + kCoordinateMarginHeight );
     newSpot.spotData = spotDictionary;
 	
     newSpot.pathLayer = [CAShapeLayer layer];
@@ -74,8 +75,8 @@
 {
     MovingSpotEntity* newSpot = [[MovingSpotEntity alloc] initWithRadius:radius];
     
-    newSpot.viewPoint = originalPt;
-    newSpot.destinationPoint = destinationPt;
+    newSpot.viewPoint = CGPointMake(originalPt.x + kCoordinateMarginWidth, originalPt.y + kCoordinateMarginHeight );
+    newSpot.destinationPoint = CGPointMake(destinationPt.x + kCoordinateMarginWidth, destinationPt.y + kCoordinateMarginHeight );
     newSpot.spotData = spotDictionary;
     
     newSpot.pathLayer = [CAShapeLayer layer];

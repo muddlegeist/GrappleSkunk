@@ -7,8 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "GrappleSkunkConstants.h"
 
-static const CGFloat kDefaultRadius = 5.0;
 
 @interface MGGraphView : NSView
 

@@ -103,4 +103,8 @@ static NSString * const kDemoJSONDataCloseKey = @"close";
     return [self.theGraphMachine getSortedArrayScaledToFrame];
 }
 
+- (void)drawAxissesInView:(NSView*)view
+{
+    [self.theGraphMachine drawAxissesInView:view];
+}
 @end

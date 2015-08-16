@@ -73,6 +73,8 @@
         [[NSColor lightGrayColor] set];
         [self.theGridPath stroke];
     }
+    
+    [[AppDelegate sharedAppDelegate].gsEngine drawAxissesInView:self];
 }
 
 #pragma mark - Graph Drawing
@@ -95,7 +97,7 @@
         CGFloat xFramePoint = ((NSNumber*)((NSDictionary*)itemDict)[kXCoordinateKey]).floatValue;
         CGFloat yFramePoint = ((NSNumber*)((NSDictionary*)itemDict)[kYCoordinateKey]).floatValue;
         
-        NSPoint arbitraryStartPoint = CGPointMake(50.0, 50.0);
+        NSPoint arbitraryStartPoint = CGPointMake(0.0, 0.0);
         NSPoint spotPoint = CGPointMake(xFramePoint, yFramePoint);
         
         if( addPointsForRedraw )

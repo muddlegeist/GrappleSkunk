@@ -24,6 +24,7 @@
 		1CD8FFF71B8006FC002E6108 /* NSBezierPath+QuartzPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFF61B8006FC002E6108 /* NSBezierPath+QuartzPath.m */; };
 		1CD8FFF91B800786002E6108 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD8FFF81B800786002E6108 /* QuartzCore.framework */; };
 		1CD8FFFC1B801A76002E6108 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFFB1B801A76002E6108 /* MainWindowController.m */; };
+		1CD8FFFF1B802F89002E6108 /* PathFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFFE1B802F89002E6108 /* PathFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CD800011B8036A5002E6108 /* GrappleSkunkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrappleSkunkConstants.h; sourceTree = "<group>"; };
 		1CD8FFA51B7EA705002E6108 /* GrappleSkunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrappleSkunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CD8FFA91B7EA705002E6108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CD8FFAA1B7EA705002E6108 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +71,8 @@
 		1CD8FFF81B800786002E6108 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1CD8FFFA1B801A76002E6108 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		1CD8FFFB1B801A76002E6108 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		1CD8FFFD1B802F89002E6108 /* PathFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFactory.h; path = Classes/PathFactory.h; sourceTree = "<group>"; };
+		1CD8FFFE1B802F89002E6108 /* PathFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathFactory.m; path = Classes/PathFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 		1CD8FFA71B7EA705002E6108 /* GrappleSkunk */ = {
 			isa = PBXGroup;
 			children = (
+				1CD800011B8036A5002E6108 /* GrappleSkunkConstants.h */,
 				1CD8FFD51B7EAF5E002E6108 /* Classes */,
 				1CD8FFD11B7EAF19002E6108 /* Categories */,
 				1CD8FFAA1B7EA705002E6108 /* AppDelegate.h */,
@@ -175,6 +180,8 @@
 				1CD8FFE41B7EBFE4002E6108 /* GraphMachine.m */,
 				1CD8FFE61B7ED4B6002E6108 /* GrappleSkunkEngine.h */,
 				1CD8FFE71B7ED4B6002E6108 /* GrappleSkunkEngine.m */,
+				1CD8FFFD1B802F89002E6108 /* PathFactory.h */,
+				1CD8FFFE1B802F89002E6108 /* PathFactory.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -306,6 +313,7 @@
 				1CD8FFE51B7EBFE4002E6108 /* GraphMachine.m in Sources */,
 				1CD8FFDE1B7EB18B002E6108 /* SpotEntity.m in Sources */,
 				1CD8FFDD1B7EB18B002E6108 /* SpotControlView.m in Sources */,
+				1CD8FFFF1B802F89002E6108 /* PathFactory.m in Sources */,
 				1CD8FFF71B8006FC002E6108 /* NSBezierPath+QuartzPath.m in Sources */,
 				1CD8FFD01B7EA7B9002E6108 /* MGGraphView.m in Sources */,
 				1CD8FFE81B7ED4B6002E6108 /* GrappleSkunkEngine.m in Sources */,

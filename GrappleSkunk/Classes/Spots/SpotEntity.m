@@ -8,8 +8,8 @@
 
 #import "SpotEntity.h"
 #import "NSBezierPath+QuartzPath.h"
-
-static CGFloat kDefaultRadius = 5.0;
+#import "PathFactory.h"
+#import "GrappleSkunkConstants.h"
 
 float DistanceBetweenPoints(NSPoint pt1, NSPoint pt2)
 {
@@ -123,16 +123,7 @@ float DistanceBetweenPoints(NSPoint pt1, NSPoint pt2)
 
 - (NSBezierPath*)createPath
 {
-    NSBezierPath * drawPath = [NSBezierPath bezierPath];
-    [drawPath setLineWidth: 1];
-    
-    NSRect circleRect;
-    
-    circleRect.size.width = circleRect.size.height = 2.0 * self.radius;
-    circleRect.origin.x = self.viewPoint.x - self.radius;
-    circleRect.origin.y = self.viewPoint.y - self.radius;
-    
-    [drawPath appendBezierPathWithOvalInRect: circleRect];
+    NSBezierPath * drawPath = [PathFactory createCircularPathOfRadius:self.radius atPoint:self.viewPoint];
     
     return drawPath;
 }

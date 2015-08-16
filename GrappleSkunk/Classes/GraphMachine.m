@@ -10,6 +10,7 @@
 #import "DataPointDictionaryKeys.h"
 #import "GrappleSkunkConstants.h"
 
+
 typedef NSComparisonResult (^CompareBlock)(id, id);
 
 @interface GraphMachine ()
@@ -339,7 +340,7 @@ andMinYGraphIntervalPoint:(CGFloat)yIvalPoint
     CGRect viewBounds = view.bounds;
     
     NSBezierPath *textViewSurround = [NSBezierPath bezierPathWithRoundedRect:viewBounds xRadius:10 yRadius:10];
-    [textViewSurround setLineWidth:kGraphBorderWidth];
+    [textViewSurround setLineWidth:kGraphOuterBorderWidth];
     [[NSColor blackColor] set];
     [textViewSurround stroke];
     
@@ -350,52 +351,93 @@ andMinYGraphIntervalPoint:(CGFloat)yIvalPoint
     graphFrame.size.height -= kCoordinateMarginHeight;
     
     NSBezierPath *graphSurround = [NSBezierPath bezierPathWithRoundedRect:graphFrame xRadius:10 yRadius:10];
-    [graphSurround setLineWidth:kGraphBorderWidth];
+    [graphSurround setLineWidth:kGraphInnerBorderWidth];
     [graphSurround stroke];
     
-//    CGFloat xGridDataValue = self.xMinIntervalPoint;
-//    
-//    while( xGridDataValue <= self.xGridDataValueMax )
-//    {
-//        CGFloat frameX = self.calculationFrame.origin.x + ((xGridDataValue - self.xGridDataValueMin) * self.xRatioDisplayToData);
-//        [thePath moveToPoint: CGPointMake( frameX, self.calculationFrame.origin.y)];
-//        [thePath lineToPoint: CGPointMake( frameX, self.calculationFrame.origin.y + self.frameHeight)];
-//        
-//        xGridDataValue += self.xInterval;
-//    }
-//    
-//    xGridDataValue = self.xMinIntervalPoint - self.xInterval;
-//    
-//    while( xGridDataValue >= self.xGridDataValueMin )
-//    {
-//        CGFloat frameX = self.calculationFrame.origin.x + ((xGridDataValue - self.xGridDataValueMin) * self.xRatioDisplayToData);
-//        [thePath moveToPoint: CGPointMake( frameX, self.calculationFrame.origin.y)];
-//        [thePath lineToPoint: CGPointMake( frameX, self.calculationFrame.origin.y + self.frameHeight)];
-//        
-//        xGridDataValue -= self.xInterval;
-//    }
-//    
-//    CGFloat yGridDataValue = self.yMinIntervalPoint;
-//    
-//    while( yGridDataValue <= self.yGridDataValueMax )
-//    {
-//        CGFloat frameY = self.calculationFrame.origin.y + ((yGridDataValue - self.yGridDataValueMin) * self.yRatioDisplayToData);
-//        [thePath moveToPoint: CGPointMake( self.calculationFrame.origin.x, frameY )];
-//        [thePath lineToPoint: CGPointMake( self.calculationFrame.origin.x + self.frameWidth, frameY )];
-//        
-//        yGridDataValue += self.yInterval;
-//    }
-//    
-//    yGridDataValue = self.yMinIntervalPoint - self.yInterval;
-//    
-//    while( yGridDataValue >= self.yGridDataValueMin )
-//    {
-//        CGFloat frameY = self.calculationFrame.origin.y + ((yGridDataValue - self.yGridDataValueMin) * self.yRatioDisplayToData);
-//        [thePath moveToPoint: CGPointMake( self.calculationFrame.origin.x, frameY )];
-//        [thePath lineToPoint: CGPointMake( self.calculationFrame.origin.x + self.frameWidth, frameY )];
-//        
-//        yGridDataValue -= self.yInterval;
-//    }
+    
+    NSDictionary *attributes1 = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:20], NSFontAttributeName,[NSColor blackColor], NSForegroundColorAttributeName, nil];
+    
+    NSDictionary *attributes2 = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:15], NSFontAttributeName,[NSColor blackColor], NSForegroundColorAttributeName, nil];
+    
+    CGFloat xGridDataValue = self.xMinIntervalPoint;
+    
+    while( xGridDataValue <= self.xGridDataValueMax )
+    {
+        NSString *axisStr = [self.xAxisFormatter makeFormattedString:xGridDataValue];
+        
+        NSAttributedString* axisAttStr = [[NSAttributedString alloc] initWithString:axisStr attributes: attributes1];
+        
+        CGFloat frameX = self.calculationFrame.origin.x + ((xGridDataValue - self.xGridDataValueMin) * self.xRatioDisplayToData);
+        
+        NSSize attrSize = [axisAttStr size];
+        
+        CGFloat textX = frameX - (attrSize.width / 2.0);
+        CGFloat textY = ( kCoordinateMarginHeight / 2.0 ) - (attrSize.height / 2.0);
+                                  
+        [axisAttStr drawAtPoint:NSMakePoint(textX, textY)];
+        
+        xGridDataValue += self.xInterval;
+    }
+    
+    xGridDataValue = self.xMinIntervalPoint - self.xInterval;
+    
+    while( xGridDataValue >= self.xGridDataValueMin )
+    {
+        NSString *axisStr = [self.xAxisFormatter makeFormattedString:xGridDataValue];
+        
+        NSAttributedString* axisAttStr = [[NSAttributedString alloc] initWithString:axisStr attributes: attributes1];
+        
+        CGFloat frameX = self.calculationFrame.origin.x + ((xGridDataValue - self.xGridDataValueMin) * self.xRatioDisplayToData);
+        
+        NSSize attrSize = [axisAttStr size];
+        
+        CGFloat textX = frameX - (attrSize.width / 2.0);
+        CGFloat textY = ( kCoordinateMarginHeight / 2.0 ) - (attrSize.height / 2.0);
+        
+        [axisAttStr drawAtPoint:NSMakePoint(textX, textY)];
+        
+        xGridDataValue -= self.xInterval;
+    }
+    
+    CGFloat yGridDataValue = self.yMinIntervalPoint;
+    
+    while( yGridDataValue <= self.yGridDataValueMax )
+    {
+        NSString *axisStr = [self.yAxisFormatter makeFormattedString:yGridDataValue];
+        
+        NSAttributedString* axisAttStr = [[NSAttributedString alloc] initWithString:axisStr attributes: attributes2];
+        
+        CGFloat frameY = self.calculationFrame.origin.y + ((yGridDataValue - self.yGridDataValueMin) * self.yRatioDisplayToData);
+        
+        NSSize attrSize = [axisAttStr size];
+        
+        CGFloat textX = ( kCoordinateMarginWidth / 2.0 ) - (attrSize.width / 2.0);
+        CGFloat textY = frameY - (attrSize.height / 2.0);
+        
+        [axisAttStr drawAtPoint:NSMakePoint(textX, textY)];
+        
+        yGridDataValue += self.yInterval;
+    }
+    
+    yGridDataValue = self.yMinIntervalPoint - self.yInterval;
+    
+    while( yGridDataValue >= self.yGridDataValueMin )
+    {
+        NSString *axisStr = [self.yAxisFormatter makeFormattedString:yGridDataValue];
+        
+        NSAttributedString* axisAttStr = [[NSAttributedString alloc] initWithString:axisStr attributes: attributes2];
+        
+        CGFloat frameY = self.calculationFrame.origin.y + ((yGridDataValue - self.yGridDataValueMin) * self.yRatioDisplayToData);
+        
+        NSSize attrSize = [axisAttStr size];
+        
+        CGFloat textX = ( kCoordinateMarginWidth / 2.0 ) - (attrSize.width / 2.0);
+        CGFloat textY = frameY - (attrSize.height / 2.0);
+        
+        [axisAttStr drawAtPoint:NSMakePoint(textX, textY)];
+        
+        yGridDataValue -= self.yInterval;
+    }
 }
 
 - (NSArray*)getSortedArrayScaledToFrame

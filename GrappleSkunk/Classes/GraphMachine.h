@@ -7,10 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ValueFormatter.h"
 
 @interface GraphMachine : NSObject
 
 @property (assign, nonatomic) CGRect calculationFrame;
+@property (strong, nonatomic) id <ValueFormatter> xAxisFormatter;
+@property (strong, nonatomic) id <ValueFormatter> yAxisFormatter;
 
 - (void)addDataPointWithXValue:(CGFloat)xValue
                         yValue:(CGFloat)yValue

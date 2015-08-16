@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CD800081B8043EE002E6108 /* MMDDFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD800071B8043EE002E6108 /* MMDDFormatter.m */; };
+		1CD8000B1B804589002E6108 /* DollarFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8000A1B804589002E6108 /* DollarFormatter.m */; };
 		1CD8FFAC1B7EA705002E6108 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFAB1B7EA705002E6108 /* AppDelegate.m */; };
 		1CD8FFAE1B7EA705002E6108 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFAD1B7EA705002E6108 /* main.m */; };
 		1CD8FFB11B7EA705002E6108 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFB01B7EA705002E6108 /* ViewController.m */; };
@@ -38,7 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CADB4351B804D6500A4B053 /* ValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueFormatter.h; sourceTree = "<group>"; };
 		1CD800011B8036A5002E6108 /* GrappleSkunkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrappleSkunkConstants.h; sourceTree = "<group>"; };
+		1CD800061B8043EE002E6108 /* MMDDFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDDFormatter.h; sourceTree = "<group>"; };
+		1CD800071B8043EE002E6108 /* MMDDFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDDFormatter.m; sourceTree = "<group>"; };
+		1CD800091B804589002E6108 /* DollarFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DollarFormatter.h; sourceTree = "<group>"; };
+		1CD8000A1B804589002E6108 /* DollarFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DollarFormatter.m; sourceTree = "<group>"; };
 		1CD8FFA51B7EA705002E6108 /* GrappleSkunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrappleSkunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CD8FFA91B7EA705002E6108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CD8FFAA1B7EA705002E6108 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -94,6 +101,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CD800041B804270002E6108 /* Value Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				1CD800061B8043EE002E6108 /* MMDDFormatter.h */,
+				1CD800071B8043EE002E6108 /* MMDDFormatter.m */,
+				1CD800091B804589002E6108 /* DollarFormatter.h */,
+				1CD8000A1B804589002E6108 /* DollarFormatter.m */,
+				1CADB4351B804D6500A4B053 /* ValueFormatter.h */,
+			);
+			name = "Value Formatters";
+			path = "Classes/Value Formatters";
+			sourceTree = "<group>";
+		};
 		1CD8FF9C1B7EA705002E6108 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +193,7 @@
 		1CD8FFD51B7EAF5E002E6108 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1CD800041B804270002E6108 /* Value Formatters */,
 				1CD8FFD61B7EB178002E6108 /* Spots */,
 				1CD8FFCE1B7EA7B9002E6108 /* MGGraphView.h */,
 				1CD8FFCF1B7EA7B9002E6108 /* MGGraphView.m */,
@@ -313,11 +334,13 @@
 				1CD8FFE51B7EBFE4002E6108 /* GraphMachine.m in Sources */,
 				1CD8FFDE1B7EB18B002E6108 /* SpotEntity.m in Sources */,
 				1CD8FFDD1B7EB18B002E6108 /* SpotControlView.m in Sources */,
+				1CD800081B8043EE002E6108 /* MMDDFormatter.m in Sources */,
 				1CD8FFFF1B802F89002E6108 /* PathFactory.m in Sources */,
 				1CD8FFF71B8006FC002E6108 /* NSBezierPath+QuartzPath.m in Sources */,
 				1CD8FFD01B7EA7B9002E6108 /* MGGraphView.m in Sources */,
 				1CD8FFE81B7ED4B6002E6108 /* GrappleSkunkEngine.m in Sources */,
 				1CD8FFB11B7EA705002E6108 /* ViewController.m in Sources */,
+				1CD8000B1B804589002E6108 /* DollarFormatter.m in Sources */,
 				1CD8FFAE1B7EA705002E6108 /* main.m in Sources */,
 				1CD8FFAC1B7EA705002E6108 /* AppDelegate.m in Sources */,
 			);
@@ -435,8 +458,14 @@
 		1CD8FFC91B7EA705002E6108 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					Classes/Value,
+				);
 				INFOPLIST_FILE = GrappleSkunk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -446,8 +475,14 @@
 		1CD8FFCA1B7EA705002E6108 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					Classes/Value,
+				);
 				INFOPLIST_FILE = GrappleSkunk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -509,6 +544,7 @@
 				1CD8FFCA1B7EA705002E6108 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1CD8FFCB1B7EA705002E6108 /* Build configuration list for PBXNativeTarget "GrappleSkunkTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +553,7 @@
 				1CD8FFCD1B7EA705002E6108 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

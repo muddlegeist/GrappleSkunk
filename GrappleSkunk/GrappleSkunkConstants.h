@@ -13,7 +13,8 @@ static const CGFloat kDefaultRadius = 5.0;
 static const CGFloat kGraphXAxisRatio = 0.7; //the x span takes up 70% of the frame width
 static const CGFloat kGraphYAxisRatio = 0.6; //the y span takes up 60% of the frame height
 
-static const CGFloat kCoordinateMarginWidth = 40.0;
+static const CGFloat kCoordinateMarginWidth = 60.0;
 static const CGFloat kCoordinateMarginHeight = 40.0;
 
-static const CGFloat kGraphBorderWidth = 4.0;
+static const CGFloat kGraphOuterBorderWidth = 8.0;
+static const CGFloat kGraphInnerBorderWidth = 4.0;

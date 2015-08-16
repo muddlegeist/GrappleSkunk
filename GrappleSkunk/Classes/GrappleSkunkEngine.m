@@ -8,6 +8,8 @@
 
 #import "GrappleSkunkEngine.h"
 #import "GraphMachine.h"
+#import "MMDDFormatter.h"
+#import "DollarFormatter.h"
 
 static NSString * const kDemoJSONDataStockdataKey = @"stockdata";
 static NSString * const kDemoJSONDataDateKey = @"date";
@@ -30,6 +32,9 @@ static NSString * const kDemoJSONDataCloseKey = @"close";
         _theDateFormatter = [NSDateFormatter new];
         
         [_theDateFormatter setDateFormat:@"YYYY-MM-DD"];
+        
+        _theGraphMachine.xAxisFormatter = [MMDDFormatter new];
+        _theGraphMachine.yAxisFormatter = [DollarFormatter new];
     }
     return self;
 }

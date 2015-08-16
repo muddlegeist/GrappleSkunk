@@ -32,4 +32,6 @@ withDataDictionary:(NSDictionary*)spotDictionary;
 
 - (void)animateSpots;
 
+- (NSArray*)getPointsArray;
+
 @end

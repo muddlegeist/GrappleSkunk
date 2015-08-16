@@ -10,6 +10,7 @@
 #import "SpotControlView.h"
 #import "AppDelegate.h"
 #import "DataPointDictionaryKeys.h"
+#import "PathFactory.h"
 
 @interface MGGraphView ()
 
@@ -74,6 +75,8 @@
         [self.theGridPath stroke];
     }
     
+    //[self drawBoundingPath];
+    
     [[AppDelegate sharedAppDelegate].gsEngine drawAxissesInView:self];
 }
 
@@ -116,6 +119,36 @@
     {
         [AppDelegate sharedAppDelegate].inRedraw = NO;
     }
+}
+
+- (NSArray*)getPointsArray
+{
+    NSArray* pointsArray = [self.spotView getPointsArray];
+    
+    return pointsArray;
+}
+
+- (NSBezierPath*)createGraphBoundingPath;
+{
+    NSArray* pointsArray = [self getPointsArray];
+    NSMutableArray* mutablePointsArray = [pointsArray mutableCopy];
+    NSPoint firstPoint = ((NSValue*)[pointsArray firstObject]).pointValue;
+    NSPoint lastPoint = ((NSValue*)[pointsArray lastObject]).pointValue;
+    [mutablePointsArray addObject:[NSValue valueWithPoint:CGPointMake(lastPoint.x, kCoordinateMarginHeight)]];
+    [mutablePointsArray addObject:[NSValue valueWithPoint:CGPointMake(firstPoint.x, kCoordinateMarginHeight)]];
+    
+    NSBezierPath *newPath = [PathFactory createPointBoundedCurveBezierPath:mutablePointsArray snipOverlappingPoints:NO];
+    
+    return newPath;
+}
+
+- (void)drawBoundingPath
+{
+    NSBezierPath* boundingPath = [self createGraphBoundingPath];
+    
+    [boundingPath setLineWidth:0.0];
+    [[NSColor redColor] set];
+    [boundingPath fill];
 }
 
 - (void)animateSpots

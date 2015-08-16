@@ -17,5 +17,6 @@
 - (void)addDataPoints:(NSArray*)dataPointsArray;
 - (void)clearDataPoints;
 
+- (NSArray*)getPointsArray;
 
 @end

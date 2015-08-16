@@ -111,6 +111,7 @@ andMinYGraphIntervalPoint:(CGFloat)yIvalPoint
         auxView = (NSView*)[NSNull null];
     }
     
+    
     NSDictionary *newDataPoint = @{
                                        kXValKey : [NSNumber numberWithFloat:xValue],
                                        kYValKey : [NSNumber numberWithFloat:yValue],

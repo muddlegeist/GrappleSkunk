@@ -22,7 +22,7 @@
     if (self) {
         _dateFormatter = [NSDateFormatter new];
         
-        [_dateFormatter setDateFormat:@"MM/DD"];
+        [_dateFormatter setDateFormat:@"MM/dd"];
     }
     return self;
 }

@@ -157,4 +157,29 @@
     }
 }
 
+- (NSArray*)getPointsArray
+{
+    NSMutableArray *mutableArray = [NSMutableArray new];
+    
+    for( id item in self.spots )
+    {
+        NSPoint aPoint = CGPointZero;
+        
+        if( [item isKindOfClass:[MovingSpotEntity class]] )
+        {
+            MovingSpotEntity* spot = (MovingSpotEntity*)item;
+            aPoint = spot.destinationPoint;
+        }
+        else
+        {
+            SpotEntity* spot = (SpotEntity*)item;
+            aPoint = spot.viewPoint;
+        }
+        
+        [mutableArray addObject:[NSValue valueWithPoint:aPoint]];
+    }
+    
+    return [NSArray arrayWithArray:mutableArray];
+}
+
 @end

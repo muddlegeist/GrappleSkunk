@@ -12,4 +12,13 @@
 
 + (NSBezierPath*)createCircularPathOfRadius:(CGFloat)radius atPoint:(NSPoint)point;
 
++ (NSBezierPath*)createPointBoundedCurveBezierPath:(NSArray*)cgPointsArray
+                             snipOverlappingPoints:(BOOL)snip;
+
++ (void)appendCurveToBezierPath:(NSBezierPath*)path
+                     firstPoint:(CGPoint)point1
+                    secondPoint:(CGPoint)point2
+                     thirdPoint:(CGPoint)point3
+          snipOverlappingPoints:(BOOL)snip;
+
 @end

@@ -31,7 +31,7 @@ static NSString * const kDemoJSONDataCloseKey = @"close";
         _theGraphMachine = [GraphMachine new];
         _theDateFormatter = [NSDateFormatter new];
         
-        [_theDateFormatter setDateFormat:@"YYYY-MM-DD"];
+        [_theDateFormatter setDateFormat:@"yyyy-MM-dd"];
         
         _theGraphMachine.xAxisFormatter = [MMDDFormatter new];
         _theGraphMachine.yAxisFormatter = [DollarFormatter new];
@@ -70,7 +70,8 @@ static NSString * const kDemoJSONDataCloseKey = @"close";
             
             CGFloat itemCloseValue = [itemCloseString floatValue];
             NSDate *itemCloseDate=[self.theDateFormatter dateFromString:itemDateString];
-            NSLog(@"%@",itemCloseDate);
+            NSLog(@"Adding Date Point: %@",itemCloseDate);
+            NSLog(@"                 : %f",[itemCloseDate timeIntervalSinceReferenceDate]);
             
             [self.theGraphMachine addDataPointWithXValue:[itemCloseDate timeIntervalSinceReferenceDate] yValue:itemCloseValue label:itemDateString auxView:nil];
         }

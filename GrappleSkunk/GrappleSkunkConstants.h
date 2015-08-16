@@ -24,5 +24,5 @@ static const CGFloat kSkunkHeightPercent = 0.3;
 static const CGFloat kSkunkTopMarginPercent = 0.1;
 
 static const CGFloat kGiantSkunkPercent = 0.55;
-static const CGFloat kGiantVisitMinSeconds = 1.0;
-static const CGFloat kGiantVisitMaxSeconds = 3.0;
+static const CGFloat kGiantVisitMinSeconds = 3.0;
+static const CGFloat kGiantVisitMaxSeconds = 10.0;

@@ -131,7 +131,7 @@
         }
         else if( self.animationIndex == 1 )
         {
-            self.theSkunkView.frame = self.theSkunkOffscreenFrame1;
+            self.theSkunkView.frame = self.theSkunkOffscreenFrame2;
         }
     }
 }

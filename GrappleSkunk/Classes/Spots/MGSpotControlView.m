@@ -1,5 +1,5 @@
 //
-//  SpotControlView.mm
+//  MGSpotControlView.mm
 //  SpotControl
 //
 //  Created by Muddlegeist on 8/14/15.
@@ -8,12 +8,12 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "SpotControlView.h"
-#import "SpotEntity.h"
-#import "MovingSpotEntity.h"
+#import "MGSpotControlView.h"
+#import "MGSpotEntity.h"
+#import "MGMovingSpotEntity.h"
 #import "GrappleSkunkConstants.h"
 
-@implementation SpotControlView
+@implementation MGSpotControlView
 
 - (void)dealloc
 {
@@ -50,13 +50,13 @@
 //    
 //    for( id item in self.spots )
 //    {
-//        [(SpotEntity*)item draw];
+//        [(MGSpotEntity*)item draw];
 //    }
 //}
 
 - (void)addSpot:(NSPoint)pt withRadius:(CGFloat)radius withDataDictionary:(NSDictionary*)spotDictionary
 {
-	SpotEntity* newSpot = [[SpotEntity alloc] initWithRadius:radius];
+	MGSpotEntity* newSpot = [[MGSpotEntity alloc] initWithRadius:radius];
 	
     newSpot.viewPoint = CGPointMake(pt.x + kCoordinateMarginWidth, pt.y + kCoordinateMarginHeight );
     newSpot.spotData = spotDictionary;
@@ -73,7 +73,7 @@
                   withRadius:(CGFloat)radius
           withDataDictionary:(NSDictionary*)spotDictionary
 {
-    MovingSpotEntity* newSpot = [[MovingSpotEntity alloc] initWithRadius:radius];
+    MGMovingSpotEntity* newSpot = [[MGMovingSpotEntity alloc] initWithRadius:radius];
     
     newSpot.viewPoint = CGPointMake(originalPt.x + kCoordinateMarginWidth, originalPt.y + kCoordinateMarginHeight );
     newSpot.destinationPoint = CGPointMake(destinationPt.x + kCoordinateMarginWidth, destinationPt.y + kCoordinateMarginHeight );
@@ -86,7 +86,7 @@
     [self.spots addObject:newSpot];
 }
 
-- (void)removeSpot:(SpotEntity*)victimSpot
+- (void)removeSpot:(MGSpotEntity*)victimSpot
 {
     [victimSpot.pathLayer removeFromSuperlayer];
     [self.spots removeObject:victimSpot];
@@ -96,7 +96,7 @@
 {
     for( id item in self.spots )
     {
-        SpotEntity *spot = (SpotEntity*)item;
+        MGSpotEntity *spot = (MGSpotEntity*)item;
         [spot.pathLayer removeFromSuperlayer];
     }
     
@@ -123,7 +123,7 @@
 	
     for( id item in self.spots )
     {
-        SpotEntity* entity = (SpotEntity*)item;
+        MGSpotEntity* entity = (MGSpotEntity*)item;
         
         if( [entity isHit:eventPoint] )
         {
@@ -150,9 +150,9 @@
 {
     for( id item in self.spots )
     {
-        if( [item isKindOfClass:[MovingSpotEntity class]] )
+        if( [item isKindOfClass:[MGMovingSpotEntity class]] )
         {
-            [(MovingSpotEntity*)item animateToDestination];
+            [(MGMovingSpotEntity*)item animateToDestination];
         }
     }
 }
@@ -165,14 +165,14 @@
     {
         NSPoint aPoint = CGPointZero;
         
-        if( [item isKindOfClass:[MovingSpotEntity class]] )
+        if( [item isKindOfClass:[MGMovingSpotEntity class]] )
         {
-            MovingSpotEntity* spot = (MovingSpotEntity*)item;
+            MGMovingSpotEntity* spot = (MGMovingSpotEntity*)item;
             aPoint = spot.destinationPoint;
         }
         else
         {
-            SpotEntity* spot = (SpotEntity*)item;
+            MGSpotEntity* spot = (MGSpotEntity*)item;
             aPoint = spot.viewPoint;
         }
         

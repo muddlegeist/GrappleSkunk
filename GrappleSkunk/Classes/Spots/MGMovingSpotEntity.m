@@ -1,22 +1,22 @@
 //
-//  MovingSpotEntity.m
+//  MGMovingSpotEntity.m
 //  GrappleSkunk
 //
 //  Created by Muddlegeist on 8/15/15.
 //  Copyright (c) 2015 Muddlegeist. All rights reserved.
 //
 
-#import "MovingSpotEntity.h"
+#import "MGMovingSpotEntity.h"
 #import "NSBezierPath+QuartzPath.h"
-#import "PathFactory.h"
+#import "MGPathFactory.h"
 
 static NSString * const kAnimationKey = @"shapeAnimation";
 
-@implementation MovingSpotEntity
+@implementation MGMovingSpotEntity
 
 - (NSBezierPath*)createPathAtPoint:(NSPoint)spotPoint
 {
-    NSBezierPath * drawPath = [PathFactory createCircularPathOfRadius:self.radius atPoint:spotPoint];
+    NSBezierPath * drawPath = [MGPathFactory createCircularPathOfRadius:self.radius atPoint:spotPoint];
     
     return drawPath;
 }

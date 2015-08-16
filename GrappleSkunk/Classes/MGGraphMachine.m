@@ -1,19 +1,19 @@
 //
-//  GraphMachine.m
+//  MGGraphMachine.m
 //  GrappleSkunk
 //
 //  Created by Muddlegeist on 8/14/15.
 //  Copyright (c) 2015 Muddlegeist. All rights reserved.
 //
 
-#import "GraphMachine.h"
-#import "DataPointDictionaryKeys.h"
+#import "MGGraphMachine.h"
+#import "MGDataPointDictionaryKeys.h"
 #import "GrappleSkunkConstants.h"
 
 
 typedef NSComparisonResult (^CompareBlock)(id, id);
 
-@interface GraphMachine ()
+@interface MGGraphMachine ()
 
 @property (strong, nonatomic) NSMutableArray* dataPoints;
 @property (copy, nonatomic) CompareBlock sortComparator;
@@ -66,7 +66,7 @@ typedef NSComparisonResult (^CompareBlock)(id, id);
 
 @end
 
-@implementation GraphMachine
+@implementation MGGraphMachine
 
 - (instancetype)init
 {

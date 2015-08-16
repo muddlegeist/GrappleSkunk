@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  GrappleSkunkViewController.h
 //  GrappleSkunk
 //
 //  Created by Muddlegeist on 8/14/15.
@@ -10,7 +10,7 @@
 
 #import "MGGraphView.h"
 
-@interface ViewController : NSViewController
+@interface GrappleSkunkViewController : NSViewController
 
 @property (weak, nonatomic) IBOutlet MGGraphView* theGraphView;
 

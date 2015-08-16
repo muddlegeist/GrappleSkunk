@@ -93,9 +93,9 @@ static NSString * const kAnimationKey = @"shapeAnimation";
     CGFloat skunkHeight = viewBounds.size.height * kSkunkHeightPercent;
     CGFloat skunkTopMargin = viewBounds.size.height * kSkunkTopMarginPercent;
     
-    CGRect theSkunkCenterscreenFrame = CGRectMake(viewBounds.origin.x + (viewBounds.size.width/2.0)/* - (skunkWidth/2.0)*/, viewBounds.origin.y + viewBounds.size.height - skunkTopMargin - skunkHeight, skunkWidth, skunkHeight);
+    CGRect theSkunkCenterscreenFrame = CGRectMake(viewBounds.origin.x + (viewBounds.size.width/2.0) - (skunkWidth/2.0), viewBounds.origin.y + viewBounds.size.height - skunkTopMargin - skunkHeight, skunkWidth, skunkHeight);
     
-    CGPoint originPoint = CGPointMake(theSkunkCenterscreenFrame.origin.x + 10.0, theSkunkCenterscreenFrame.origin.y + theSkunkCenterscreenFrame.size.height/2.0);
+    CGPoint originPoint = CGPointMake(theSkunkCenterscreenFrame.origin.x + 20.0, theSkunkCenterscreenFrame.origin.y + theSkunkCenterscreenFrame.size.height/2.0);
     
     NSInteger pointCount = self.theGraphPoints.count;
     

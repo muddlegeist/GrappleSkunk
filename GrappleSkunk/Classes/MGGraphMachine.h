@@ -1,5 +1,5 @@
 //
-//  GraphMachine.h
+//  MGGraphMachine.h
 //  GrappleSkunk
 //
 //  Created by Muddlegeist on 8/14/15.
@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "ValueFormatter.h"
 
-@interface GraphMachine : NSObject
+@interface MGGraphMachine : NSObject
 
 @property (assign, nonatomic) CGRect calculationFrame;
 @property (strong, nonatomic) id <ValueFormatter> xAxisFormatter;

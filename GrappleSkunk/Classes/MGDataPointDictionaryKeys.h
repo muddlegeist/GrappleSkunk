@@ -1,5 +1,5 @@
 //
-//  DataPointDictionaryKeys.h
+//  MGDataPointDictionaryKeys.h
 //  
 //
 //  Created by Muddlegeist on 8/15/15.

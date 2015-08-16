@@ -7,7 +7,7 @@
 //
 
 #import "GrappleSkunkEngine.h"
-#import "GraphMachine.h"
+#import "MGGraphMachine.h"
 #import "MMDDFormatter.h"
 #import "DollarFormatter.h"
 
@@ -17,7 +17,7 @@ static NSString * const kDemoJSONDataCloseKey = @"close";
 
 @interface GrappleSkunkEngine ()
 
-@property (strong, nonatomic) GraphMachine* theGraphMachine;
+@property (strong, nonatomic) MGGraphMachine* theMGGraphMachine;
 @property (strong, nonatomic) NSDateFormatter * theDateFormatter;
 
 @end
@@ -28,13 +28,13 @@ static NSString * const kDemoJSONDataCloseKey = @"close";
 {
     self = [super init];
     if (self) {
-        _theGraphMachine = [GraphMachine new];
+        _theMGGraphMachine = [MGGraphMachine new];
         _theDateFormatter = [NSDateFormatter new];
         
         [_theDateFormatter setDateFormat:@"yyyy-MM-dd"];
         
-        _theGraphMachine.xAxisFormatter = [MMDDFormatter new];
-        _theGraphMachine.yAxisFormatter = [DollarFormatter new];
+        _theMGGraphMachine.xAxisFormatter = [MMDDFormatter new];
+        _theMGGraphMachine.yAxisFormatter = [DollarFormatter new];
     }
     return self;
 }
@@ -70,10 +70,8 @@ static NSString * const kDemoJSONDataCloseKey = @"close";
             
             CGFloat itemCloseValue = [itemCloseString floatValue];
             NSDate *itemCloseDate=[self.theDateFormatter dateFromString:itemDateString];
-            NSLog(@"Adding Date Point: %@",itemCloseDate);
-            NSLog(@"                 : %f",[itemCloseDate timeIntervalSinceReferenceDate]);
             
-            [self.theGraphMachine addDataPointWithXValue:[itemCloseDate timeIntervalSinceReferenceDate] yValue:itemCloseValue label:itemDateString auxView:nil];
+            [self.theMGGraphMachine addDataPointWithXValue:[itemCloseDate timeIntervalSinceReferenceDate] yValue:itemCloseValue label:itemCloseString auxView:nil];
         }
     }
 }
@@ -87,30 +85,30 @@ static NSString * const kDemoJSONDataCloseKey = @"close";
     
     float yInterval = 1.0;
     
-    CGPoint minConglomeratePoint = [self.theGraphMachine getMinimumConglomeratePoint];
+    CGPoint minConglomeratePoint = [self.theMGGraphMachine getMinimumConglomeratePoint];
     
-    [self.theGraphMachine setXGraphInterval:xInterval minXGraphIntervalPoint:floor(minConglomeratePoint.x) theYGraphInterval:yInterval andMinYGraphIntervalPoint:floor(minConglomeratePoint.y)];
+    [self.theMGGraphMachine setXGraphInterval:xInterval minXGraphIntervalPoint:floor(minConglomeratePoint.x) theYGraphInterval:yInterval andMinYGraphIntervalPoint:floor(minConglomeratePoint.y)];
 }
 
 #pragma mark - Engine Access
 
 - (NSBezierPath*)getGridPathForFrame:(CGRect)inFrame
 {
-    self.theGraphMachine.calculationFrame = inFrame;
+    self.theMGGraphMachine.calculationFrame = inFrame;
     
-    NSBezierPath *path = [self.theGraphMachine createGridPathForFrame];
+    NSBezierPath *path = [self.theMGGraphMachine createGridPathForFrame];
     return path;
 }
 
 - (NSArray*)getSortedArrayScaledToFrame:(CGRect)inFrame
 {
-    self.theGraphMachine.calculationFrame = inFrame;
+    self.theMGGraphMachine.calculationFrame = inFrame;
     
-    return [self.theGraphMachine getSortedArrayScaledToFrame];
+    return [self.theMGGraphMachine getSortedArrayScaledToFrame];
 }
 
 - (void)drawAxissesInView:(NSView*)view
 {
-    [self.theGraphMachine drawAxissesInView:view];
+    [self.theMGGraphMachine drawAxissesInView:view];
 }
 @end

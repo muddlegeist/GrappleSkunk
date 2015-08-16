@@ -7,16 +7,16 @@
 //
 
 #import "MGGraphView.h"
-#import "SpotControlView.h"
+#import "MGSpotControlView.h"
 #import "AppDelegate.h"
-#import "DataPointDictionaryKeys.h"
-#import "PathFactory.h"
+#import "MGDataPointDictionaryKeys.h"
+#import "MGPathFactory.h"
 #import "MGSkunkView.h"
 #import "MGGraphLineView.h"
 
 @interface MGGraphView ()
 
-@property (strong, nonatomic) SpotControlView *spotView;
+@property (strong, nonatomic) MGSpotControlView *spotView;
 @property (strong, nonatomic) MGGraphLineView *lineView;
 @property (strong, nonatomic) MGSkunkView *skunkView;
 
@@ -33,7 +33,7 @@
      object:nil];
     
     _lineView = [[MGGraphLineView alloc] initWithFrame:self.bounds];
-    _spotView = [[SpotControlView alloc] initWithFrame:self.bounds];
+    _spotView = [[MGSpotControlView alloc] initWithFrame:self.bounds];
     _skunkView = [[MGSkunkView alloc] initWithFrame:self.bounds];
     
     [self addSubview:self.lineView];
@@ -133,29 +133,6 @@
     NSArray* pointsArray = [self.spotView getPointsArray];
     
     return pointsArray;
-}
-
-- (NSBezierPath*)createGraphBoundingPath;
-{
-    NSArray* pointsArray = [self getPointsArray];
-    NSMutableArray* mutablePointsArray = [pointsArray mutableCopy];
-    NSPoint firstPoint = ((NSValue*)[pointsArray firstObject]).pointValue;
-    NSPoint lastPoint = ((NSValue*)[pointsArray lastObject]).pointValue;
-    [mutablePointsArray addObject:[NSValue valueWithPoint:CGPointMake(lastPoint.x, kCoordinateMarginHeight)]];
-    [mutablePointsArray addObject:[NSValue valueWithPoint:CGPointMake(firstPoint.x, kCoordinateMarginHeight)]];
-    
-    NSBezierPath *newPath = [PathFactory createPointBoundedCurveBezierPath:mutablePointsArray snipOverlappingPoints:NO];
-    
-    return newPath;
-}
-
-- (void)drawBoundingPath
-{
-    NSBezierPath* boundingPath = [self createGraphBoundingPath];
-    
-    [boundingPath setLineWidth:0.0];
-    [[NSColor redColor] set];
-    [boundingPath fill];
 }
 
 - (void)animateSpots

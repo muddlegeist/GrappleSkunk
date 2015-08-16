@@ -1,14 +1,14 @@
 //
-//  SpotEntity.mm
+//  MGSpotEntity.mm
 //  SpotControl
 //
 //  Created by Muddlegeist on 8/14/15.
 //  Copyright (c) 2015 Muddlegeist. All rights reserved.
 //
 
-#import "SpotEntity.h"
+#import "MGSpotEntity.h"
 #import "NSBezierPath+QuartzPath.h"
-#import "PathFactory.h"
+#import "MGPathFactory.h"
 #import "GrappleSkunkConstants.h"
 
 float DistanceBetweenPoints(NSPoint pt1, NSPoint pt2)
@@ -18,7 +18,7 @@ float DistanceBetweenPoints(NSPoint pt1, NSPoint pt2)
     return sqrtf( ptxd*ptxd + ptyd*ptyd );
 }
 
-@implementation SpotEntity
+@implementation MGSpotEntity
 
 - (id)init
 {
@@ -100,7 +100,7 @@ float DistanceBetweenPoints(NSPoint pt1, NSPoint pt2)
 -(void) drawMouseOver
 {
     self.pathLayer.strokeColor = [NSColor blackColor].CGColor;
-    self.pathLayer.fillColor = [NSColor whiteColor].CGColor;
+    self.pathLayer.fillColor = [NSColor greenColor].CGColor;
     self.pathLayer.opacity = 1.0;
     self.pathLayer.lineWidth = 2.0;
 }
@@ -123,7 +123,7 @@ float DistanceBetweenPoints(NSPoint pt1, NSPoint pt2)
 
 - (NSBezierPath*)createPath
 {
-    NSBezierPath * drawPath = [PathFactory createCircularPathOfRadius:self.radius atPoint:self.viewPoint];
+    NSBezierPath * drawPath = [MGPathFactory createCircularPathOfRadius:self.radius atPoint:self.viewPoint];
     
     return drawPath;
 }

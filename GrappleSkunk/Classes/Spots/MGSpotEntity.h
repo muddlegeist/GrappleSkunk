@@ -1,5 +1,5 @@
 //
-//  SpotEntity.h
+//  MGSpotEntity.h
 //  SpotControl
 //
 //  Created by Muddlegeist on 8/14/15.
@@ -11,7 +11,7 @@
 
 typedef enum{ defaultState, overState, downState, disabledState } EntityStateType;
 
-@interface SpotEntity : NSObject
+@interface MGSpotEntity : NSObject
 
 @property (assign, nonatomic) EntityStateType entityState;
 @property (assign, nonatomic) NSPoint viewPoint;

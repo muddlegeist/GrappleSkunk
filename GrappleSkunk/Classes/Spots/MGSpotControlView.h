@@ -1,5 +1,5 @@
 //
-//  SpotControlView.h
+//  MGSpotControlView.h
 //  SpotControl
 //
 //  Created by Muddlegeist on 8/14/15.
@@ -7,9 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SpotEntity.h"
+#import "MGSpotEntity.h"
 
-@interface SpotControlView : NSView
+@interface MGSpotControlView : NSView
 
 @property (strong, nonatomic) NSMutableArray* spots;
 @property (strong, nonatomic) id targetID;
@@ -23,7 +23,7 @@ withDataDictionary:(NSDictionary*)spotDictionary;
                   withRadius:(CGFloat)radius
           withDataDictionary:(NSDictionary*)spotDictionary;
 
-- (void)removeSpot:(SpotEntity*)victimSpot;
+- (void)removeSpot:(MGSpotEntity*)victimSpot;
 - (void)removeAllSpots;
 
 - (void)mouseEntered:(NSEvent *)theEvent;

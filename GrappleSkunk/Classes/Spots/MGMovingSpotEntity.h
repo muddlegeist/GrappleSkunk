@@ -1,5 +1,5 @@
 //
-//  MovingSpotEntity.h
+//  MGMovingSpotEntity.h
 //  GrappleSkunk
 //
 //  Created by Muddlegeist on 8/15/15.
@@ -9,9 +9,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "SpotEntity.h"
+#import "MGSpotEntity.h"
 
-@interface MovingSpotEntity : SpotEntity <NSAnimationDelegate>
+@interface MGMovingSpotEntity : MGSpotEntity <NSAnimationDelegate>
 
 @property (assign, nonatomic) NSPoint destinationPoint;
 

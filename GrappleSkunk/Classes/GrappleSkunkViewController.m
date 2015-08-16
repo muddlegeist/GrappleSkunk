@@ -1,16 +1,16 @@
 //
-//  ViewController.m
+//  GrappleSkunkViewController.m
 //  GrappleSkunk
 //
 //  Created by Muddlegeist on 8/14/15.
 //  Copyright (c) 2015 Muddlegeist. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "GrappleSkunkViewController.h"
 #import "AppDelegate.h"
 #import "GrappleSkunkConstants.h"
 
-@implementation ViewController
+@implementation GrappleSkunkViewController
 
 - (void)dealloc
 {

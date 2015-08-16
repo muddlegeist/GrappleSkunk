@@ -10,26 +10,26 @@
 		1CADB43E1B8108D300A4B053 /* MGSkunkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADB43D1B8108D300A4B053 /* MGSkunkView.m */; };
 		1CADB4411B810AFD00A4B053 /* skunk-clip-art-skunk-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CADB4401B810AFD00A4B053 /* skunk-clip-art-skunk-6.png */; };
 		1CADB4441B812B8C00A4B053 /* MGGraphLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADB4431B812B8C00A4B053 /* MGGraphLineView.m */; };
+		1CADB44A1B81497100A4B053 /* GrappleSkunkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADB4461B81497100A4B053 /* GrappleSkunkViewController.m */; };
+		1CADB44B1B81497100A4B053 /* MGMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADB4491B81497100A4B053 /* MGMainWindowController.m */; };
 		1CD800081B8043EE002E6108 /* MMDDFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD800071B8043EE002E6108 /* MMDDFormatter.m */; };
 		1CD8000B1B804589002E6108 /* DollarFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8000A1B804589002E6108 /* DollarFormatter.m */; };
 		1CD8FFAC1B7EA705002E6108 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFAB1B7EA705002E6108 /* AppDelegate.m */; };
 		1CD8FFAE1B7EA705002E6108 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFAD1B7EA705002E6108 /* main.m */; };
-		1CD8FFB11B7EA705002E6108 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFB01B7EA705002E6108 /* ViewController.m */; };
 		1CD8FFB41B7EA705002E6108 /* GrappleSkunk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFB21B7EA705002E6108 /* GrappleSkunk.xcdatamodeld */; };
 		1CD8FFB61B7EA705002E6108 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8FFB51B7EA705002E6108 /* Images.xcassets */; };
 		1CD8FFB91B7EA705002E6108 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8FFB71B7EA705002E6108 /* Main.storyboard */; };
 		1CD8FFC51B7EA705002E6108 /* GrappleSkunkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFC41B7EA705002E6108 /* GrappleSkunkTests.m */; };
 		1CD8FFD01B7EA7B9002E6108 /* MGGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFCF1B7EA7B9002E6108 /* MGGraphView.m */; };
-		1CD8FFDD1B7EB18B002E6108 /* SpotControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFD81B7EB18B002E6108 /* SpotControlView.m */; };
-		1CD8FFDE1B7EB18B002E6108 /* SpotEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFDA1B7EB18B002E6108 /* SpotEntity.m */; };
-		1CD8FFE51B7EBFE4002E6108 /* GraphMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFE41B7EBFE4002E6108 /* GraphMachine.m */; };
+		1CD8FFDD1B7EB18B002E6108 /* MGSpotControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFD81B7EB18B002E6108 /* MGSpotControlView.m */; };
+		1CD8FFDE1B7EB18B002E6108 /* MGSpotEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFDA1B7EB18B002E6108 /* MGSpotEntity.m */; };
+		1CD8FFE51B7EBFE4002E6108 /* MGGraphMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFE41B7EBFE4002E6108 /* MGGraphMachine.m */; };
 		1CD8FFE81B7ED4B6002E6108 /* GrappleSkunkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFE71B7ED4B6002E6108 /* GrappleSkunkEngine.m */; };
 		1CD8FFEB1B7ED8B8002E6108 /* stockprices.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8FFEA1B7ED8B8002E6108 /* stockprices.json */; };
-		1CD8FFF41B80022B002E6108 /* MovingSpotEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFF31B80022B002E6108 /* MovingSpotEntity.m */; };
+		1CD8FFF41B80022B002E6108 /* MGMovingSpotEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFF31B80022B002E6108 /* MGMovingSpotEntity.m */; };
 		1CD8FFF71B8006FC002E6108 /* NSBezierPath+QuartzPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFF61B8006FC002E6108 /* NSBezierPath+QuartzPath.m */; };
 		1CD8FFF91B800786002E6108 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD8FFF81B800786002E6108 /* QuartzCore.framework */; };
-		1CD8FFFC1B801A76002E6108 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFFB1B801A76002E6108 /* MainWindowController.m */; };
-		1CD8FFFF1B802F89002E6108 /* PathFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFFE1B802F89002E6108 /* PathFactory.m */; };
+		1CD8FFFF1B802F89002E6108 /* MGPathFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFFE1B802F89002E6108 /* MGPathFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +49,10 @@
 		1CADB4401B810AFD00A4B053 /* skunk-clip-art-skunk-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skunk-clip-art-skunk-6.png"; sourceTree = "<group>"; };
 		1CADB4421B812B8C00A4B053 /* MGGraphLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGGraphLineView.h; path = Classes/MGGraphLineView.h; sourceTree = "<group>"; };
 		1CADB4431B812B8C00A4B053 /* MGGraphLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGGraphLineView.m; path = Classes/MGGraphLineView.m; sourceTree = "<group>"; };
+		1CADB4461B81497100A4B053 /* GrappleSkunkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrappleSkunkViewController.m; path = Classes/GrappleSkunkViewController.m; sourceTree = "<group>"; };
+		1CADB4471B81497100A4B053 /* MGDataPointDictionaryKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGDataPointDictionaryKeys.h; path = Classes/MGDataPointDictionaryKeys.h; sourceTree = "<group>"; };
+		1CADB4481B81497100A4B053 /* MGMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGMainWindowController.h; path = Classes/MGMainWindowController.h; sourceTree = "<group>"; };
+		1CADB4491B81497100A4B053 /* MGMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGMainWindowController.m; path = Classes/MGMainWindowController.m; sourceTree = "<group>"; };
 		1CD800011B8036A5002E6108 /* GrappleSkunkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrappleSkunkConstants.h; sourceTree = "<group>"; };
 		1CD800061B8043EE002E6108 /* MMDDFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDDFormatter.h; sourceTree = "<group>"; };
 		1CD800071B8043EE002E6108 /* MMDDFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDDFormatter.m; sourceTree = "<group>"; };
@@ -59,8 +63,7 @@
 		1CD8FFAA1B7EA705002E6108 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1CD8FFAB1B7EA705002E6108 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1CD8FFAD1B7EA705002E6108 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1CD8FFAF1B7EA705002E6108 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1CD8FFB01B7EA705002E6108 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1CD8FFAF1B7EA705002E6108 /* GrappleSkunkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GrappleSkunkViewController.h; path = Classes/GrappleSkunkViewController.h; sourceTree = "<group>"; };
 		1CD8FFB31B7EA705002E6108 /* GrappleSkunk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GrappleSkunk.xcdatamodel; sourceTree = "<group>"; };
 		1CD8FFB51B7EA705002E6108 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1CD8FFB81B7EA705002E6108 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,25 +72,22 @@
 		1CD8FFC41B7EA705002E6108 /* GrappleSkunkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrappleSkunkTests.m; sourceTree = "<group>"; };
 		1CD8FFCE1B7EA7B9002E6108 /* MGGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGGraphView.h; path = Classes/MGGraphView.h; sourceTree = "<group>"; };
 		1CD8FFCF1B7EA7B9002E6108 /* MGGraphView.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; name = MGGraphView.m; path = Classes/MGGraphView.m; sourceTree = "<group>"; };
-		1CD8FFD71B7EB18B002E6108 /* SpotControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotControlView.h; path = Classes/Spots/SpotControlView.h; sourceTree = "<group>"; };
-		1CD8FFD81B7EB18B002E6108 /* SpotControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotControlView.m; path = Classes/Spots/SpotControlView.m; sourceTree = "<group>"; };
-		1CD8FFD91B7EB18B002E6108 /* SpotEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotEntity.h; path = Classes/Spots/SpotEntity.h; sourceTree = "<group>"; };
-		1CD8FFDA1B7EB18B002E6108 /* SpotEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotEntity.m; path = Classes/Spots/SpotEntity.m; sourceTree = "<group>"; };
-		1CD8FFE31B7EBFE4002E6108 /* GraphMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphMachine.h; path = Classes/GraphMachine.h; sourceTree = "<group>"; };
-		1CD8FFE41B7EBFE4002E6108 /* GraphMachine.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; name = GraphMachine.m; path = Classes/GraphMachine.m; sourceTree = "<group>"; };
+		1CD8FFD71B7EB18B002E6108 /* MGSpotControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSpotControlView.h; path = Classes/Spots/MGSpotControlView.h; sourceTree = "<group>"; };
+		1CD8FFD81B7EB18B002E6108 /* MGSpotControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSpotControlView.m; path = Classes/Spots/MGSpotControlView.m; sourceTree = "<group>"; };
+		1CD8FFD91B7EB18B002E6108 /* MGSpotEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSpotEntity.h; path = Classes/Spots/MGSpotEntity.h; sourceTree = "<group>"; };
+		1CD8FFDA1B7EB18B002E6108 /* MGSpotEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSpotEntity.m; path = Classes/Spots/MGSpotEntity.m; sourceTree = "<group>"; };
+		1CD8FFE31B7EBFE4002E6108 /* MGGraphMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGGraphMachine.h; path = Classes/MGGraphMachine.h; sourceTree = "<group>"; };
+		1CD8FFE41B7EBFE4002E6108 /* MGGraphMachine.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; name = MGGraphMachine.m; path = Classes/MGGraphMachine.m; sourceTree = "<group>"; };
 		1CD8FFE61B7ED4B6002E6108 /* GrappleSkunkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrappleSkunkEngine.h; path = Classes/GrappleSkunkEngine.h; sourceTree = "<group>"; };
 		1CD8FFE71B7ED4B6002E6108 /* GrappleSkunkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrappleSkunkEngine.m; path = Classes/GrappleSkunkEngine.m; sourceTree = "<group>"; };
 		1CD8FFEA1B7ED8B8002E6108 /* stockprices.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = stockprices.json; path = "Test Data/stockprices.json"; sourceTree = "<group>"; };
-		1CD8FFEF1B7FD6C7002E6108 /* DataPointDictionaryKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataPointDictionaryKeys.h; sourceTree = "<group>"; };
-		1CD8FFF21B80022B002E6108 /* MovingSpotEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovingSpotEntity.h; path = Classes/Spots/MovingSpotEntity.h; sourceTree = "<group>"; };
-		1CD8FFF31B80022B002E6108 /* MovingSpotEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovingSpotEntity.m; path = Classes/Spots/MovingSpotEntity.m; sourceTree = "<group>"; };
+		1CD8FFF21B80022B002E6108 /* MGMovingSpotEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGMovingSpotEntity.h; path = Classes/Spots/MGMovingSpotEntity.h; sourceTree = "<group>"; };
+		1CD8FFF31B80022B002E6108 /* MGMovingSpotEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGMovingSpotEntity.m; path = Classes/Spots/MGMovingSpotEntity.m; sourceTree = "<group>"; };
 		1CD8FFF51B8006FC002E6108 /* NSBezierPath+QuartzPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+QuartzPath.h"; path = "Categories/NSBezierPath+QuartzPath.h"; sourceTree = "<group>"; };
 		1CD8FFF61B8006FC002E6108 /* NSBezierPath+QuartzPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+QuartzPath.m"; path = "Categories/NSBezierPath+QuartzPath.m"; sourceTree = "<group>"; };
 		1CD8FFF81B800786002E6108 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		1CD8FFFA1B801A76002E6108 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
-		1CD8FFFB1B801A76002E6108 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
-		1CD8FFFD1B802F89002E6108 /* PathFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFactory.h; path = Classes/PathFactory.h; sourceTree = "<group>"; };
-		1CD8FFFE1B802F89002E6108 /* PathFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathFactory.m; path = Classes/PathFactory.m; sourceTree = "<group>"; };
+		1CD8FFFD1B802F89002E6108 /* MGPathFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGPathFactory.h; path = Classes/MGPathFactory.h; sourceTree = "<group>"; };
+		1CD8FFFE1B802F89002E6108 /* MGPathFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGPathFactory.m; path = Classes/MGPathFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +124,17 @@
 				1CADB4401B810AFD00A4B053 /* skunk-clip-art-skunk-6.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		1CADB44C1B8149F900A4B053 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1CD8FFCE1B7EA7B9002E6108 /* MGGraphView.h */,
+				1CD8FFCF1B7EA7B9002E6108 /* MGGraphView.m */,
+				1CADB4421B812B8C00A4B053 /* MGGraphLineView.h */,
+				1CADB4431B812B8C00A4B053 /* MGGraphLineView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		1CD800041B804270002E6108 /* Value Formatters */ = {
@@ -166,11 +177,6 @@
 				1CD8FFD11B7EAF19002E6108 /* Categories */,
 				1CD8FFAA1B7EA705002E6108 /* AppDelegate.h */,
 				1CD8FFAB1B7EA705002E6108 /* AppDelegate.m */,
-				1CD8FFAF1B7EA705002E6108 /* ViewController.h */,
-				1CD8FFB01B7EA705002E6108 /* ViewController.m */,
-				1CD8FFFA1B801A76002E6108 /* MainWindowController.h */,
-				1CD8FFFB1B801A76002E6108 /* MainWindowController.m */,
-				1CD8FFEF1B7FD6C7002E6108 /* DataPointDictionaryKeys.h */,
 				1CD8FFB51B7EA705002E6108 /* Images.xcassets */,
 				1CD8FFB71B7EA705002E6108 /* Main.storyboard */,
 				1CD8FFB21B7EA705002E6108 /* GrappleSkunk.xcdatamodeld */,
@@ -219,19 +225,21 @@
 		1CD8FFD51B7EAF5E002E6108 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1CADB43B1B81088300A4B053 /* Skunkworks */,
-				1CD800041B804270002E6108 /* Value Formatters */,
+				1CADB44C1B8149F900A4B053 /* Views */,
 				1CD8FFD61B7EB178002E6108 /* Spots */,
-				1CD8FFCE1B7EA7B9002E6108 /* MGGraphView.h */,
-				1CD8FFCF1B7EA7B9002E6108 /* MGGraphView.m */,
-				1CD8FFE31B7EBFE4002E6108 /* GraphMachine.h */,
-				1CD8FFE41B7EBFE4002E6108 /* GraphMachine.m */,
+				1CD800041B804270002E6108 /* Value Formatters */,
+				1CADB43B1B81088300A4B053 /* Skunkworks */,
+				1CADB4471B81497100A4B053 /* MGDataPointDictionaryKeys.h */,
+				1CADB4481B81497100A4B053 /* MGMainWindowController.h */,
+				1CADB4491B81497100A4B053 /* MGMainWindowController.m */,
+				1CD8FFAF1B7EA705002E6108 /* GrappleSkunkViewController.h */,
+				1CADB4461B81497100A4B053 /* GrappleSkunkViewController.m */,
+				1CD8FFE31B7EBFE4002E6108 /* MGGraphMachine.h */,
+				1CD8FFE41B7EBFE4002E6108 /* MGGraphMachine.m */,
 				1CD8FFE61B7ED4B6002E6108 /* GrappleSkunkEngine.h */,
 				1CD8FFE71B7ED4B6002E6108 /* GrappleSkunkEngine.m */,
-				1CD8FFFD1B802F89002E6108 /* PathFactory.h */,
-				1CD8FFFE1B802F89002E6108 /* PathFactory.m */,
-				1CADB4421B812B8C00A4B053 /* MGGraphLineView.h */,
-				1CADB4431B812B8C00A4B053 /* MGGraphLineView.m */,
+				1CD8FFFD1B802F89002E6108 /* MGPathFactory.h */,
+				1CD8FFFE1B802F89002E6108 /* MGPathFactory.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -239,12 +247,12 @@
 		1CD8FFD61B7EB178002E6108 /* Spots */ = {
 			isa = PBXGroup;
 			children = (
-				1CD8FFD71B7EB18B002E6108 /* SpotControlView.h */,
-				1CD8FFD81B7EB18B002E6108 /* SpotControlView.m */,
-				1CD8FFD91B7EB18B002E6108 /* SpotEntity.h */,
-				1CD8FFDA1B7EB18B002E6108 /* SpotEntity.m */,
-				1CD8FFF21B80022B002E6108 /* MovingSpotEntity.h */,
-				1CD8FFF31B80022B002E6108 /* MovingSpotEntity.m */,
+				1CD8FFD71B7EB18B002E6108 /* MGSpotControlView.h */,
+				1CD8FFD81B7EB18B002E6108 /* MGSpotControlView.m */,
+				1CD8FFD91B7EB18B002E6108 /* MGSpotEntity.h */,
+				1CD8FFDA1B7EB18B002E6108 /* MGSpotEntity.m */,
+				1CD8FFF21B80022B002E6108 /* MGMovingSpotEntity.h */,
+				1CD8FFF31B80022B002E6108 /* MGMovingSpotEntity.m */,
 			);
 			name = Spots;
 			sourceTree = "<group>";
@@ -358,19 +366,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CD8FFF41B80022B002E6108 /* MovingSpotEntity.m in Sources */,
+				1CD8FFF41B80022B002E6108 /* MGMovingSpotEntity.m in Sources */,
 				1CD8FFB41B7EA705002E6108 /* GrappleSkunk.xcdatamodeld in Sources */,
-				1CD8FFFC1B801A76002E6108 /* MainWindowController.m in Sources */,
 				1CADB43E1B8108D300A4B053 /* MGSkunkView.m in Sources */,
-				1CD8FFE51B7EBFE4002E6108 /* GraphMachine.m in Sources */,
-				1CD8FFDE1B7EB18B002E6108 /* SpotEntity.m in Sources */,
-				1CD8FFDD1B7EB18B002E6108 /* SpotControlView.m in Sources */,
+				1CD8FFE51B7EBFE4002E6108 /* MGGraphMachine.m in Sources */,
+				1CD8FFDE1B7EB18B002E6108 /* MGSpotEntity.m in Sources */,
+				1CD8FFDD1B7EB18B002E6108 /* MGSpotControlView.m in Sources */,
+				1CADB44A1B81497100A4B053 /* GrappleSkunkViewController.m in Sources */,
 				1CD800081B8043EE002E6108 /* MMDDFormatter.m in Sources */,
-				1CD8FFFF1B802F89002E6108 /* PathFactory.m in Sources */,
+				1CD8FFFF1B802F89002E6108 /* MGPathFactory.m in Sources */,
 				1CD8FFF71B8006FC002E6108 /* NSBezierPath+QuartzPath.m in Sources */,
+				1CADB44B1B81497100A4B053 /* MGMainWindowController.m in Sources */,
 				1CD8FFD01B7EA7B9002E6108 /* MGGraphView.m in Sources */,
 				1CD8FFE81B7ED4B6002E6108 /* GrappleSkunkEngine.m in Sources */,
-				1CD8FFB11B7EA705002E6108 /* ViewController.m in Sources */,
 				1CD8000B1B804589002E6108 /* DollarFormatter.m in Sources */,
 				1CD8FFAE1B7EA705002E6108 /* main.m in Sources */,
 				1CD8FFAC1B7EA705002E6108 /* AppDelegate.m in Sources */,

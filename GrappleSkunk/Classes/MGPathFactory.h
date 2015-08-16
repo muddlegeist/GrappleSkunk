@@ -1,5 +1,5 @@
 //
-//  MainWindowController.h
+//  MGPathFactory.h
 //  GrappleSkunk
 //
 //  Created by Muddlegeist on 8/15/15.
@@ -8,8 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface MainWindowController : NSWindowController <NSWindowDelegate>
+@interface MGPathFactory : NSObject
 
-@property (weak, nonatomic) IBOutlet NSView* mainView;
++ (NSBezierPath*)createCircularPathOfRadius:(CGFloat)radius atPoint:(NSPoint)point;
 
 @end

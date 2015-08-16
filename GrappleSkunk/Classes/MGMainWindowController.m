@@ -1,19 +1,19 @@
 //
-//  MainWindowController.m
+//  MGMainWindowController.m
 //  GrappleSkunk
 //
 //  Created by Muddlegeist on 8/15/15.
 //  Copyright (c) 2015 Muddlegeist. All rights reserved.
 //
 
-#import "MainWindowController.h"
+#import "MGMainWindowController.h"
 #import "AppDelegate.h"
 
-@interface MainWindowController ()
+@interface MGMainWindowController ()
 
 @end
 
-@implementation MainWindowController
+@implementation MGMainWindowController
 
 - (void)windowDidLoad {
     [super windowDidLoad];

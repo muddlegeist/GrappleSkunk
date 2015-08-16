@@ -18,3 +18,7 @@ static const CGFloat kCoordinateMarginHeight = 40.0;
 
 static const CGFloat kGraphOuterBorderWidth = 8.0;
 static const CGFloat kGraphInnerBorderWidth = 4.0;
+
+static const CGFloat kSkunkWidthPercent = 0.3;
+static const CGFloat kSkunkHeightPercent = 0.3;
+static const CGFloat kSkunkTopMarginPercent = 0.1;

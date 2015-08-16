@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CADB43E1B8108D300A4B053 /* MGSkunkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CADB43D1B8108D300A4B053 /* MGSkunkView.m */; };
+		1CADB4411B810AFD00A4B053 /* skunk-clip-art-skunk-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CADB4401B810AFD00A4B053 /* skunk-clip-art-skunk-6.png */; };
 		1CD800081B8043EE002E6108 /* MMDDFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD800071B8043EE002E6108 /* MMDDFormatter.m */; };
 		1CD8000B1B804589002E6108 /* DollarFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8000A1B804589002E6108 /* DollarFormatter.m */; };
 		1CD8FFAC1B7EA705002E6108 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8FFAB1B7EA705002E6108 /* AppDelegate.m */; };
@@ -41,6 +43,9 @@
 
 /* Begin PBXFileReference section */
 		1CADB4351B804D6500A4B053 /* ValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueFormatter.h; sourceTree = "<group>"; };
+		1CADB43C1B8108D300A4B053 /* MGSkunkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSkunkView.h; path = Classes/Skunkworks/MGSkunkView.h; sourceTree = "<group>"; };
+		1CADB43D1B8108D300A4B053 /* MGSkunkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSkunkView.m; path = Classes/Skunkworks/MGSkunkView.m; sourceTree = "<group>"; };
+		1CADB4401B810AFD00A4B053 /* skunk-clip-art-skunk-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skunk-clip-art-skunk-6.png"; sourceTree = "<group>"; };
 		1CD800011B8036A5002E6108 /* GrappleSkunkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrappleSkunkConstants.h; sourceTree = "<group>"; };
 		1CD800061B8043EE002E6108 /* MMDDFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDDFormatter.h; sourceTree = "<group>"; };
 		1CD800071B8043EE002E6108 /* MMDDFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDDFormatter.m; sourceTree = "<group>"; };
@@ -101,6 +106,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CADB43B1B81088300A4B053 /* Skunkworks */ = {
+			isa = PBXGroup;
+			children = (
+				1CADB43C1B8108D300A4B053 /* MGSkunkView.h */,
+				1CADB43D1B8108D300A4B053 /* MGSkunkView.m */,
+			);
+			name = Skunkworks;
+			sourceTree = "<group>";
+		};
+		1CADB43F1B810AFD00A4B053 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1CADB4401B810AFD00A4B053 /* skunk-clip-art-skunk-6.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		1CD800041B804270002E6108 /* Value Formatters */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,8 +171,9 @@
 				1CD8FFB51B7EA705002E6108 /* Images.xcassets */,
 				1CD8FFB71B7EA705002E6108 /* Main.storyboard */,
 				1CD8FFB21B7EA705002E6108 /* GrappleSkunk.xcdatamodeld */,
+				1CADB43F1B810AFD00A4B053 /* Resources */,
 				1CD8FFA81B7EA705002E6108 /* Supporting Files */,
-				1CD8FFE91B7ED8A6002E6108 /* Resources */,
+				1CD8FFE91B7ED8A6002E6108 /* Test Data */,
 			);
 			path = GrappleSkunk;
 			sourceTree = "<group>";
@@ -193,6 +216,7 @@
 		1CD8FFD51B7EAF5E002E6108 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1CADB43B1B81088300A4B053 /* Skunkworks */,
 				1CD800041B804270002E6108 /* Value Formatters */,
 				1CD8FFD61B7EB178002E6108 /* Spots */,
 				1CD8FFCE1B7EA7B9002E6108 /* MGGraphView.h */,
@@ -220,12 +244,12 @@
 			name = Spots;
 			sourceTree = "<group>";
 		};
-		1CD8FFE91B7ED8A6002E6108 /* Resources */ = {
+		1CD8FFE91B7ED8A6002E6108 /* Test Data */ = {
 			isa = PBXGroup;
 			children = (
 				1CD8FFEA1B7ED8B8002E6108 /* stockprices.json */,
 			);
-			name = Resources;
+			name = "Test Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +334,7 @@
 			files = (
 				1CD8FFB61B7EA705002E6108 /* Images.xcassets in Resources */,
 				1CD8FFEB1B7ED8B8002E6108 /* stockprices.json in Resources */,
+				1CADB4411B810AFD00A4B053 /* skunk-clip-art-skunk-6.png in Resources */,
 				1CD8FFB91B7EA705002E6108 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +356,7 @@
 				1CD8FFF41B80022B002E6108 /* MovingSpotEntity.m in Sources */,
 				1CD8FFB41B7EA705002E6108 /* GrappleSkunk.xcdatamodeld in Sources */,
 				1CD8FFFC1B801A76002E6108 /* MainWindowController.m in Sources */,
+				1CADB43E1B8108D300A4B053 /* MGSkunkView.m in Sources */,
 				1CD8FFE51B7EBFE4002E6108 /* GraphMachine.m in Sources */,
 				1CD8FFDE1B7EB18B002E6108 /* SpotEntity.m in Sources */,
 				1CD8FFDD1B7EB18B002E6108 /* SpotControlView.m in Sources */,
